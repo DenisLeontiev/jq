@@ -15,6 +15,7 @@
         label="tag 2"
       />
     </TagButtons>
+    <IconsMap />
   </div>
 </template>
 
@@ -22,6 +23,7 @@
 import Button from './components/Ui/Button/Button.vue';
 import TagButtons from './components/Ui/TagButton/TagButtons.vue';
 import TagButton from './components/Ui/TagButton/TagButton.vue';
+import IconsMap from './components/Ui/Icon/IconsMap.vue';
 </script>
 
 <style lang="scss" module>

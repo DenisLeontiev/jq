@@ -1,6 +1,7 @@
 import {
   ConfigEnv, defineConfig, mergeConfig, UserConfig
 } from 'vite';
+import svgLoader from "vite-svg-loader";
 import vue from '@vitejs/plugin-vue';
 import vueTypeImports from 'vite-plugin-vue-type-imports';
 
@@ -10,6 +11,7 @@ export const finalizeViteConfig = async (
 ): Promise<UserConfig> => (mergeConfig(config, {
   plugins: [
     vue(),
+    svgLoader(),
     vueTypeImports()
   ],
   css: {

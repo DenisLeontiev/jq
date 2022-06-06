@@ -3,33 +3,26 @@
     :class="[
       $style.icon,
       colored && $style.colored,
-      $style[variant],
-      variant !== IconVariant.pure && $style.variant
     ]"
   >
-    <div
-      v-if="variant !== IconVariant.pure"
-      :class="$style.bg"
-    />
     <svg :class="$style.source">
-      <use :xlink:href="`#icon-${package ? `${package}_` : ''}${icon}`" />
+      <use :xlink:href="`#icon-${icon}`" />
     </svg>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { IconPackage, type IconProps, IconVariant } from "./index";
+import { type IconProps } from "./index";
 
 const props = withDefaults(defineProps<IconProps>(), {
-  package: "Filled" as IconPackage,
-  variant: "pure" as IconVariant,
+
 });
 
 defineExpose(props);
 </script>
 
 <style lang="scss" module>
-@import "../../assets/utils";
+// @import "../../assets/utils";
 
 .icon {
   display: flex;

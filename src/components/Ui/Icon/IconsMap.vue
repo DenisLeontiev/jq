@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { clearIconName, filterIconName } from "./index";
+import { clearIconName } from "./index";
 
 const icons = (Object.entries(
   import.meta.globEager<any>("./assets/**/*.svg"),
@@ -16,6 +16,5 @@ const icons = (Object.entries(
   .map(([key, value]) => ([
     clearIconName(key),
     value.default,
-  ]))
-  .filter(([key]) => filterIconName(key));
+  ]));
 </script>
