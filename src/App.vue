@@ -2,22 +2,25 @@
   <div :class="$style.app">
     <Button
       variant="gradient"
-      appendIcon="Copy"
+      appendIcon="Like"
     >
       test
     </Button>
 
-    <TagButton 
-      label="tag"
-    />
-    <TagButton 
-      label="tag 2"
-    />
+    <TagButtons>
+      <TagButton 
+        label="tag"
+      />
+      <TagButton 
+        label="tag 2"
+      />
+    </TagButtons>
   </div>
 </template>
 
 <script setup lang="ts">
 import Button from './components/Ui/Button/Button.vue';
+import TagButtons from './components/Ui/TagButton/TagButtons.vue';
 import TagButton from './components/Ui/TagButton/TagButton.vue';
 </script>
 

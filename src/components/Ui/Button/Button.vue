@@ -27,12 +27,27 @@
         <span>{{ label }}</span>
       </slot>
     </div>
+    <div
+      v-if="appendIcon || 'append' in $slots"
+      :class="$style.append"
+    >
+      <slot
+        name="append"
+        :icon-name="$style.icon"
+      >
+        <Icon
+          :icon="appendIcon"
+          :class="$style.icon"
+        />
+      </slot>
+    </div>
   </component>
 </template>
 
 <script lang="ts" setup>
 import { computed } from "vue";
 import { type ButtonProps, ButtonVariant } from "./index";
+import Icon from "../Icon/Icon.vue";
 
 const props = withDefaults(
   defineProps<ButtonProps>(),
