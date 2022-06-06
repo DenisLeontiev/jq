@@ -1,8 +1,12 @@
 <template>
   <div :class="$style.app">
+    <div :class="$style.sprite">
+      <IconsMap />
+    </div>
+
     <Button
       variant="gradient"
-      appendIcon="Like"
+      prependIcon="Like"
     >
       test
     </Button>
@@ -15,7 +19,6 @@
         label="tag 2"
       />
     </TagButtons>
-    <IconsMap />
   </div>
 </template>
 
@@ -39,10 +42,8 @@ import IconsMap from './components/Ui/Icon/IconsMap.vue';
 
 @import './assets/utils';
 @import './assets/typography';
-.icon {
-  fill: #000;
-  width: 50px;
-  height: 50px;
+.sprite {
+  display: none;
 }
 .app {
 

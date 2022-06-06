@@ -20,6 +20,21 @@
     @click="onClick"
   >
     <div
+      v-if="prependIcon || 'prepend' in $slots"
+      :class="$style.prepend"
+    >
+      <slot
+        name="prepend"
+        :icon-name="$style.icon"
+      >
+        <Icon
+          :package="null"
+          :icon="prependIcon"
+          :class="$style.icon"
+        />
+      </slot>
+    </div>
+    <div
       v-if="label || 'default' in $slots"
       :class="$style.content"
     >
@@ -184,5 +199,11 @@ const onClick = (event: MouseEvent) => {
         user-select: none;
         pointer-events: none;
         touch-action: none;
+    }
+
+    .icon {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
     }
 </style>
