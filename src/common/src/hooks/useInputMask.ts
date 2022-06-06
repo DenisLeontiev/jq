@@ -1,12 +1,10 @@
 import { watchEffect } from "vue";
 import { OptionalRef } from "../types";
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 export const getPhoneInputmask = () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
   const Inputmask = require("inputmask").default;
-  // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
   const InputmaskPhone = require("inputmask.phone");
-  // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
   const InputmaskPhoneCodes = require("inputmask.phone/dist/inputmask.phone/phone-codes/phone");
   InputmaskPhone(Inputmask);
   InputmaskPhoneCodes(InputmaskPhone);
@@ -28,7 +26,6 @@ export const useInputMask = (
       return;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
     const Constructor = inputmaskInstance || require("inputmask").default;
 
     isValid = Constructor.isValid.bind(Constructor);
