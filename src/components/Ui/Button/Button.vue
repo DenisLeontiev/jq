@@ -11,10 +11,8 @@
     :disabled="disabled"
     :class="[
       $style.button,
-      $style[size],
       $style[variant],
       circle && $style.circle,
-      square && $style.square,
       wide && !circle && $style.wide,
       disabled && $style.disabled,
       focusable && $style.focusable
@@ -72,7 +70,47 @@ const onClick = (event: MouseEvent) => {
 </script>
 
 <style lang="scss" module>
+    @import '../../../assets/utils';
+
     .button {
-        
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        padding: 12px 24px;
+        gap: 12px;
+        border-radius: 22px;
+        cursor: pointer;
+        transition: 200ms ease-in-out;
+        border: none;
+        box-shadow: none;
+        font-weight: 700;
+    }
+
+    .primary {
+        background-color: var(--lilac);
+        color: #fff;
+
+        @include fieldState {
+            background-color: var(--lilac-hover);
+        }
+    }
+
+    .secondary {
+        background-color: var(--violet);
+        color: var(--lilac);
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: var(--lilac-hover);
+        }
+    }
+
+    .disabled {
+        opacity: .3;
+        user-select: none;
+        pointer-events: none;
+        touch-action: none;
     }
 </style>

@@ -15,15 +15,13 @@ export interface ButtonProps {
     exact?: boolean;
     type?: 'button' | 'submit';
     disabled?: boolean;
-    size?: ButtonSize;
     variant?: ButtonVariant;
     circle?: boolean;
-    wide?: boolean;
     prependIcon?: string;
     appendIcon?: string;
     label?: string;
     focusable?: boolean;
-    square?: boolean;
+    wide?: boolean;
 }
 
 export const buttonVariants = [
