@@ -20,3 +20,11 @@
 @function vh($size) {
   @return calc(var(--vh) * #{$size});
 }
+
+@mixin fieldState {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
