@@ -5,6 +5,7 @@
     >
       test
     </Button>
+    <Icon icon="Like" />
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Button from './components/Ui/Button/Button.vue';
+import Icon from './components/Ui/Icon/Icon.vue';
 </script>
 
 <style lang="scss" module>
