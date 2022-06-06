@@ -81,7 +81,7 @@ const onClick = (event: MouseEvent) => {
         gap: 12px;
         border-radius: 22px;
         cursor: pointer;
-        transition: 200ms ease-in-out;
+        transition: all 200ms ease-in-out;
         border: none;
         box-shadow: none;
         font-weight: 700;
@@ -100,10 +100,67 @@ const onClick = (event: MouseEvent) => {
         background-color: var(--violet);
         color: var(--lilac);
 
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: var(--lilac-hover);
+        @include fieldState {
+            background-color: var(--lilac);
+            color: #fff;
+        }
+    }
+
+    .outline {
+        background-color: transparent;
+        color: var(--lilac);
+        border: 1px solid var(--lilac);
+
+        @include fieldState {
+            background-color: var(--violet);
+        }
+    }
+
+    .outlineWhite {
+        background-color: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+
+        @include fieldState {
+            background-color: #fff;
+            color: var(--lilac);
+        }
+    }
+
+    .white {
+        background-color: #fff;
+        color: var(--lilac);
+        border: 1px solid #fff;
+
+        @include fieldState {
+            border-color: var(--lilac);
+            color: var(--lilac);
+        }
+    }
+
+    .gradient {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: calc(100% + 20px);
+            height: 100%;
+            left: -20px;
+            top: 0;
+            background: var(--gradient);
+            transition: 200ms ease-in-out;
+            user-select: none;
+        }
+
+        @include fieldState {
+
+            &::before {
+                transform: translateX(20px);
+            }
         }
     }
 

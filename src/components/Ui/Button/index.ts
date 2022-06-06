@@ -4,7 +4,7 @@ export enum ButtonVariant {
     primary = 'primary',
     secondary = 'secondary',
     outline = 'outline',
-    outlineWhite = 'ButtonSize',
+    outlineWhite = 'outlineWhite',
     white = 'white',
     gradient = 'gradient'
 }
