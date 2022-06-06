@@ -1,482 +1,276 @@
 <template>
   <div
       :class="[
-      $style.field,
-      $style[size],
-      touched && hasError && $style.hasError,
+      $style.root,
       disabled && $style.disabled,
-      focused && $style.focused,
       required && $style.required,
-      ...arrayFrom(state, s => $style[s]),
-      (label || 'label' in $slots) && $style.hasLabel
+      hasError && $style.hasError,
+      focused && $style.focused,
+      processing && $style.processing,
+      empty && $style.empty,
+      touched && $style.touched,
+      prependIcon && $style.hasPrependIcon
     ]"
   >
-    <component
-        :is="asLabel ? 'label' : 'div'"
-        ref="triggerRef"
-        :class="[$style.trigger, triggerClass]"
-        :tabindex="(!disabled && !focused) ? 0 : -1"
-        @focus="$emit('focus', $event)"
-        @blur="$emit('blur', $event)"
-    >
-      <span
-          v-if="prependIcon || ('prepend' in $scopedSlots) || ('prepend' in $slots)"
+    <div :class="$style.container">
+      <Badge
+          v-if="badge"
+          :label="badge"
+          :class="$style.badge"
+      />
+      <div
+          v-if="prependIcon || 'prepend' in $slots"
           :class="$style.prepend"
       >
         <slot
             name="prepend"
-            :icon-class="$style.icon"
+            :icon-name="$style.icon"
         >
           <Icon
+              :package="null"
               :icon="prependIcon"
-              :class="[$style.icon, iconClass]"
+              :class="$style.icon"
           />
         </slot>
-      </span>
-      <span
-          :class="[$style.input, inputClass]"
+      </div>
+      <div
+          v-if="content || 'default' in $slots"
+          :class="$style.content"
       >
-        <slot />
-        <span
-            v-if="label"
-            :class="$style.label"
-        >
-          <slot name="label">
-            {{ label }}
-          </slot>
-        </span>
-      </span>
-      <span
-          v-if="appendIcon || ('append' in $scopedSlots) || ('append' in $slots)"
+        <slot>
+          <div :class="$style.label">
+            <span :class="$style.labelContent">{{ label }}</span>
+          </div>
+          <div
+              v-if="suffix"
+              :class="$style.suffix"
+          >
+            <span>{{ suffix }}</span>
+          </div>
+          <div
+              v-if="postfix"
+              :class="$style.postfix"
+          >
+            <span><span
+                :class="$style.displayValue"
+            >{{ displayValue || '' }}</span>{{ postfix }}</span>
+          </div>
+          <span
+              v-if="!empty"
+              :class="$style.value"
+          >{{ content }}</span>
+        </slot>
+      </div>
+      <div
+          v-if="appendIcon || 'append' in $slots"
           :class="$style.append"
       >
         <slot
             name="append"
-            :icon-class="$style.icon"
+            :icon-name="$style.icon"
         >
-          <span
-              @mouseover="showErrorHint"
-              @mouseleave="hideErrorHint"
-          >
-            <Icon
-                :icon="appendIcon"
-                :class="[$style.icon, iconClass]"
-            />
-          </span>
-        </slot>
-      </span>
-    </component>
-    <div
-        v-if="hint || 'hint' in $slots || meta || 'meta' in $slots"
-        :class="$style.footer"
-    >
-      <div
-          v-if="hint || 'hint' in $slots"
-          :class="$style.hint"
-      >
-        <slot name="hint">
-          {{ hint }}
-        </slot>
-      </div>
-      <div
-          v-if="meta || 'meta' in $slots"
-          :class="$style.meta"
-      >
-        <slot name="meta">
-          {{ meta }}
+          <Icon
+              :package="null"
+              :icon="appendIcon"
+              :class="$style.icon"
+          />
         </slot>
       </div>
     </div>
     <div
-        v-if="touched && (hasError || ('error' in $slots)) && ((appendIcon && errorHintVisible) || true)"
-        :class="$style.error"
+        v-if="meta"
+        :class="$style.footer"
     >
-      <Icon
-          v-if="!['underline'].includes(state)"
-          icon="cancel"
-          :class="$style.errorIcon"
-      />
-      <div :class="$style.errorText">
-        <slot name="error">
-          <span>{{ arrayFrom(computedError).join('\n') }}</span>
-        </slot>
+      <div :class="$style.meta">
+        {{ meta }}
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import {
-  computed, ref, toRef, watch,
-} from "vue";
-import { arrayFrom, defineComponent } from "../../../utils";
-import { FieldProps } from "./index";
-import { useToggle } from "../../../hooks";
+<script lang="ts" setup>
+import { useField, useFocus } from "@friendsonly/common";
+import { computed, toRef } from "vue";
+import { type FieldProps } from "./index";
 import Icon from "../Icon/Icon.vue";
-import { useFormField } from "../Form";
+import Badge from "../Badge/Badge.vue";
 
-export default defineComponent<FieldProps, "focus" | "blur" | "mounted">({
-  name: "Field",
-  components: { Icon },
-  props: {
-    label: String,
-    error: String,
-    state: {
-      type: [String, Array] as any,
-      default: "bordered",
-    },
-    required: Boolean,
-    name: String,
-    disabled: Boolean,
-    hint: String,
-    meta: String,
-    focused: Boolean,
-    asLabel: Boolean,
-    triggerClass: String,
-    inputClass: String,
-    size: {
-      type: String,
-      default: "medium",
-    },
-    prependIcon: String,
-    appendIcon: String,
-    iconClass: String,
-  },
-  emits: ["focus", "blur", "mounted"],
-  setup(props, { emit }) {
-    const {
-      error: formError,
-      touched: formTouched,
-      hasFormInjection,
-    } = useFormField(toRef(props, "name"));
-    const hasError = computed(() => (
-        !!formError.value || !!props.error
-    ));
-    const computedError = computed(() => (
-        formError.value || props.error
-    ));
+const props = defineProps<FieldProps>();
 
-    const triggerRef = ref<HTMLElement>();
+const emit = defineEmits<{
+  (event: "update:focused", value: boolean): void
+}>();
 
-    watch(triggerRef, (newRef) => {
-      if (!newRef) {
-        return;
-      }
+const {
+  touched,
+  error,
+} = useField(props, toRef(props, "name"));
 
-      emit("mounted", newRef);
-    }, {
-      immediate: true,
-    });
+const hasError = computed(() => !!error.value.length);
 
-    const focused = toRef(props, "focused");
-
-    const [errorHintVisible,,, { show: showErrorHint, hide: hideErrorHint }] = useToggle(false);
-
-    const innerTouched = ref<boolean>(hasFormInjection ? formTouched.value! : false);
-
-    const touched = computed<boolean>({
-      get() {
-        return hasFormInjection ? formTouched.value! : innerTouched.value;
-      },
-      set(newTouched) {
-        if (hasFormInjection) {
-          formTouched.value = newTouched;
-        }
-
-        innerTouched.value = newTouched;
-      },
-    });
-
-    watch(focused, (value) => {
-      if (!value) {
-        touched.value = true;
-      }
-    });
-
-    return {
-      hasError,
-      errorHintVisible,
-      showErrorHint,
-      hideErrorHint,
-      computedError,
-      arrayFrom,
-      touched,
-      triggerRef,
-    };
-  },
-});
+const {
+  focused,
+  onFocus,
+  onBlur,
+} = useFocus();
 </script>
 
 <style lang="scss" module>
 @import "../../assets/utils";
 
-.field {
-  --box-shadow: var(--stroke);
-  --label: var(--black-40);
-  --min-input-height: auto;
+.root {
+  --box-shadow: var(--color-Secondary_Gray_8);
+  --background: var(--color-White_1);
+  --color: var(--color-Text_Light_Secondary);
+  --label: var(--color-Text_Light_Secondary);
 
-  display: flex;
-  flex-direction: column;
-  gap: rem(8px);
+  &:not(.disabled) {
+    &:hover {
+      --box-shadow: var(--color-Secondary_Gray_7);
+    }
 
-  &.hasLabel {
-    padding-top: rem(8px);
+    &:not(.empty) {
+      --color: var(--color-Text_Light_Primary);
+      --left: var(--color-Text_Light_Secondary);
+    }
+
+    &.touched {
+      &.hasError {
+        --box-shadow: var(--color-Red_1);
+        --label: var(--color-Red_1);
+      }
+
+      &.valid {
+        --box-shadow: var(--color-Primary_Blue_1);
+        --label: var(--color-Primary_Blue_1);
+      }
+    }
+
+    &.processing {
+      --label: var(--color-Secondary_Gray_4);
+    }
+
+    &.required {
+      --box-shadow: var(--color-Secondary_Gray_4);
+      --label: var(--color-Secondary_Gray_4);
+
+      .labelContent {
+        &::after {
+          content: ' *';
+        }
+      }
+    }
+
+    &.focused {
+      --box-shadow: var(--color-Primary_Blue_3);
+      --label: var(--color-Primary_Blue_3);
+    }
   }
 
   &.disabled {
-    &:not(.undisabled) {
-      opacity: .5;
-    }
-
-    .trigger,
-    .hint,
-    .error {
-      cursor: default;
-    }
+    --box-shadow: var(--color-Secondary_Gray_8);
+    --background: var(--color-Secondary_Gray_8);
+    --label: var(--color-Text_Light_Secondary);
   }
 
-  &.bordered,
-  &.filled {
-    --min-input-height: #{rem(23px)};
-
-    .trigger {
-      background-color: var(--white);
-      box-shadow: inset 0 0 0 rem(1.35px) var(--box-shadow);
-
-      border-radius: var(--radius);
-    }
-
+  &:not(.empty) {
     .label {
-      position: absolute;
-      left: rem(15px);
-      top: 0;
-
-      @include hint(500);
-
-      pointer-events: none;
-
-      transform: translateY(-50%);
-
-      padding: rem(5px);
-
-      background-color: var(--white);
+      height: 0;
+      @include typography_Body_xs;
+      transform: translateY(rem(-26px)) translateX(rem(-4px));
     }
 
-    .error {
-      @include supHint(500);
-    }
-
-    .icon {
-      color: var(--stroke-2);
-    }
-  }
-
-  &.underline {
-    gap: rem(10px);
-
-    .trigger {
-      padding: 0 0 rem(10px);
-      box-shadow: inset 0 rem(-1px) 0 0 var(--blue-blend);
-
-      gap: rem(7px);
-
-      display: flex;
-      flex-direction: column;
-    }
-
-    text-align: center;
-
-    .input {
-      justify-content: center;
-    }
-
-    .meta {
-      width: 0;
-      display: flex;
-      justify-content: flex-end;
-      white-space: nowrap;
-    }
-
-    .error {
-      @include text;
-    }
-  }
-
-  &.focused {
-    &:not(.filled) {
-      --box-shadow: var(--blue);
-    }
-    --label: var(--blue);
-
-    &.filled {
-      .trigger {
-        box-shadow:
-            inset 0 0 0 rem(1.35px) var(--stroke),
-            0 rem(4px) rem(20px) var(--black-010);
-      }
-    }
-  }
-
-  &.hasError {
-    &:not(.filled), &.filled:not(.focused) {
-      --box-shadow: var(--red);
-    }
-    --label: var(--red);
-  }
-
-  &.required {
-    .label {
-      &:after {
-        content: ' *'
-      }
-    }
-  }
-
-  &.default {
-    &.filled,
-    &.bordered {
-      .trigger {
-        padding: rem(11px) rem(20px) rem(12px);
-      }
-    }
-
-    .input {
-      @include text(500);
-    }
-  }
-
-  &.medium {
-    &.filled,
-    &.bordered {
-      .trigger {
-        padding: rem(16px) rem(20px);
-      }
-    }
-
-    .input {
-      @include text(500);
-    }
-  }
-
-  &.auth {
-    position: relative;
-    & .errorIcon {
-      display: none;
-    }
-    & input::placeholder {
-      color: transparent;
-    }
-    & .label {
-      font-size: 14px;
-      line-height: 17px;
-      font-weight: 500;
-      letter-spacing: 0px;
-      left: 15px;
-      top: 28px;
-      color: #a1a1a5;
-      border-radius: 25px;
-      transition: all .3s ease-in-out;
-    }
-    &.focused .label,
-    & input:not(:placeholder-shown) + .label {
-      left: rem(15px);
-      top: 0;
-
-      @include hint(500);
-    }
-    & .error {
-      display: inline-flex;
-      color: #fff;
-      background: var(--red-3);
-      position: absolute;
-      bottom: -40px;
-      right: 14px;
-      padding: 12px;
-      border-radius: 8px;
-      z-index: 1;
-      &::before {
-        content: '';
-        display: flex;
-        width: 12px;
-        height: 8px;
-        position: absolute;
-        top: -7px;
-        right: 8px;
-        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEyIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik00LjQgMS4xMzM0NkwwIDcuMDAwMTJIMTJMNy42IDEuMTMzNDZDNi44IDAuMDY2Nzg4NyA1LjIgMC4wNjY3ODkyIDQuNCAxLjEzMzQ2WiIgZmlsbD0iI0ZGNEM0QyIvPgo8L3N2Zz4K);
+    &.hasPrependIcon {
+      .label {
+        transform: translateY(rem(-26px)) translateX(rem(-4px - 12px - 16px));
       }
     }
   }
 }
 
-.trigger {
+.container {
   position: relative;
-
-  inline-size: -webkit-fill-available;
-
-  display: flex;
-
-  gap: rem(15px);
-}
-
-.append,
-.prepend {
-  flex-shrink: 0;
 
   display: flex;
   align-items: center;
+
+  box-shadow: inset 0 0 0 rem(2px) var(--box-shadow);
+  background: var(--background);
+
+  border-radius: rem(10px);
+  padding: rem(18px) rem(20px);
 }
 
 .icon {
-  height: rem(15px);
-  width: rem(15px);
+  height: rem(16px);
+  width: rem(16px);
+  color: var(--color-Text_Light_Secondary);
+}
+
+.prepend + *,
+.content + * {
+  margin-left: rem(12px);
+}
+
+.content {
+  flex-grow: 1;
+  width: 0;
+  @include typography_Body_S;
+  color: var(--color);
+
+  display: flex;
+}
+
+.badge {
+  position: absolute;
+  top: rem(-3px);
+  right: rem(-4px);
 }
 
 .label {
+  pointer-events: none;
+  width: 0;
+
+  transition: .25s ease;
+  transition-property: transform, font-size, line-height, padding, height;
+
   color: var(--label);
 }
 
-.input {
-  display: flex;
-  flex-grow: 1;
+.labelContent {
+  background: var(--background);
+  display: block;
+  inline-size: max-content;
+  padding: 0 rem(4px);
+  border-radius: rem(4px) rem(4px) 0 0;
+}
 
-  min-height: var(--min-input-height);
+.suffix,
+.postfix {
+  pointer-events: none;
+  @include typography_Body_S;
+  color: var(--color);
+  white-space: nowrap;
+}
+
+.postfix {
+  width: 0;
+  height: 0;
+
+  .displayValue {
+    opacity: 0;
+  }
 }
 
 .footer {
   display: flex;
-  align-items: baseline;
-}
-
-.hint {
-  flex-grow: 1;
-
-  @include supHint(500);
-
-  color: var(--black-40);
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: rem(8px);
 }
 
 .meta {
-  margin-left: auto;
-
-  @include subHint(500);
-
-  color: var(--black-40);
-}
-
-.error {
-  color: var(--red);
-}
-
-.errorIcon {
-  display: inline-block;
-  height: rem(9px);
-  width: rem(9px);
-  margin-right: rem(11px);
-}
-
-.errorText {
-  display: inline;
-
-  white-space: pre-line;
+  @include typography_Body_xs;
+  color: var(--label);
 }
 </style>
