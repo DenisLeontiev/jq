@@ -16,7 +16,7 @@
         :disabled="false"
         :required="false"
     />
-
+    {{ test }}
     <Checkbox
       label="test"
     />
