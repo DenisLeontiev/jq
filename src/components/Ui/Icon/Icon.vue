@@ -22,7 +22,7 @@ defineExpose(props);
 </script>
 
 <style lang="scss" module>
-// @import "../../assets/utils";
+@import "../../../assets/utils";
 
 .icon {
   display: flex;
