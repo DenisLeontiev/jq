@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import { FormSubmitHandlerParams, useForm } from "@friendsonly/common";
+import { FormSubmitHandlerParams, useForm } from "../../../common";
 import { toRef } from "vue";
-import { type FormProps } from "./index";
+import { FormProps } from "./index";
 
-const props = defineProps<FormProps>();
+const props = withDefaults(defineProps<FormProps<any>>(), {});
 
 const emit = defineEmits<{
   (e: "submit", params: FormSubmitHandlerParams): void
@@ -28,7 +28,7 @@ const {
 </script>
 
 <style lang="scss" module>
-@import "../../assets/utils";
+@import "../../../assets/utils";
 
 .root {
 

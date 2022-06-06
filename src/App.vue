@@ -3,8 +3,21 @@
     <div :class="$style.sprite">
       <IconsMap />
     </div>
+    <Input
+        v-model="test"
+        placeholder="asdasd"
+        type="text"
+        state="state"
+        inputClass="inputClass"
+        :rows="4"
+        mask=""
+        :autofocus="false"
+        label="label"
+        :disabled="false"
+        :required="false"
+    />
 
-    <Chackbox 
+    <Checkbox
       label="test"
     />
   </div>
@@ -14,6 +27,8 @@
 import IconsMap from './components/Ui/Icon/IconsMap.vue';
 
 import Chackbox from './components/Ui/Checkbox/Checkbox.vue';
+let test = ''
+import Input from "./components/Ui/Input/Input.vue";
 </script>
 
 <style lang="scss" module>

@@ -13,11 +13,6 @@
     ]"
   >
     <div :class="$style.container">
-      <Badge
-          v-if="badge"
-          :label="badge"
-          :class="$style.badge"
-      />
       <div
           v-if="prependIcon || 'prepend' in $slots"
           :class="$style.prepend"
@@ -89,13 +84,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useField, useFocus } from "@friendsonly/common";
+import { useField, useFocus } from "../../../common";
 import { computed, toRef } from "vue";
 import { type FieldProps } from "./index";
 import Icon from "../Icon/Icon.vue";
-import Badge from "../Badge/Badge.vue";
 
-const props = defineProps<FieldProps>();
+const props = withDefaults(defineProps<FieldProps>(), {});
 
 const emit = defineEmits<{
   (event: "update:focused", value: boolean): void
@@ -116,7 +110,7 @@ const {
 </script>
 
 <style lang="scss" module>
-@import "../../assets/utils";
+@import "../../../assets/utils";
 
 .root {
   --box-shadow: var(--color-Secondary_Gray_8);
@@ -176,7 +170,7 @@ const {
   &:not(.empty) {
     .label {
       height: 0;
-      @include typography_Body_xs;
+      //@include typography_Body_xs;
       transform: translateY(rem(-26px)) translateX(rem(-4px));
     }
 
@@ -215,16 +209,10 @@ const {
 .content {
   flex-grow: 1;
   width: 0;
-  @include typography_Body_S;
+  //@include typography_Body_S;
   color: var(--color);
 
   display: flex;
-}
-
-.badge {
-  position: absolute;
-  top: rem(-3px);
-  right: rem(-4px);
 }
 
 .label {
@@ -248,7 +236,7 @@ const {
 .suffix,
 .postfix {
   pointer-events: none;
-  @include typography_Body_S;
+  //@include typography_Body_S;
   color: var(--color);
   white-space: nowrap;
 }
@@ -270,7 +258,7 @@ const {
 }
 
 .meta {
-  @include typography_Body_xs;
+  //@include typography_Body_xs;
   color: var(--label);
 }
 </style>

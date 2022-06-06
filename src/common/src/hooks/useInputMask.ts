@@ -1,5 +1,5 @@
 import { watchEffect } from "vue";
-import { OptionalRef } from "../../src/types";
+import { OptionalRef } from "../types";
 
 export const getPhoneInputmask = () => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require

@@ -17,6 +17,7 @@
     "vue-i18n": "^9.1.9"
   },
   "devDependencies": {
+    "@types/node": "^17.0.30",
     "@types/deepmerge": "^2.2.0",
     "@types/dot-object": "^2.1.2"
   },
