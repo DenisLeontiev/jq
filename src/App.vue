@@ -4,16 +4,22 @@
       <IconsMap />
     </div>
 
-    <Chackbox 
-      label="test"
-    />
+    <Checkbox 
+      name="examp"
+      label="label"
+      :model-value="isFree"
+    >
+      <template #label>foo bar</template>
+    </Checkbox>
   </div>
 </template>
 
 <script setup lang="ts">
 import IconsMap from './components/Ui/Icon/IconsMap.vue';
 
-import Chackbox from './components/Ui/Checkbox/Checkbox.vue';
+import Checkbox from './components/Ui/Checkbox/Checkbox.vue';
+
+const isFree = false;
 </script>
 
 <style lang="scss" module>

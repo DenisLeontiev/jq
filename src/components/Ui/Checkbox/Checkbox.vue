@@ -11,13 +11,7 @@
     :tabindex="0"
     @click="toggle"
   >
-    <span :class="$style.icon">
-      <Icon
-        v-if="selected && ['checkbox', 'check'].includes(variant)"
-        package="Outlined"
-        icon="Check"
-      />
-    </span>
+    <pre />
     <span
       v-if="label && 'label' in $slots"
       :class="$style.label"
@@ -37,8 +31,7 @@ import {
   computed, toRef,
 } from "vue";
 import { useField } from "../../../common/src/hooks/useForm";
-import { type CheckboxProps, CheckboxSize, CheckboxVariant } from "./index";
-import Icon from "../Icon/Icon.vue";
+import { type CheckboxProps, CheckboxVariant } from "./index";
 
 const props = withDefaults(defineProps<CheckboxProps>(), {
   modelValue: false,
@@ -75,6 +68,42 @@ const toggle = () => {
 @import "../../../assets/utils";
 
 .root {
+    display: inline-flex;
+    align-items: flex-start;
+    cursor: pointer;
+
+    pre {
+        flex-shrink: 0;
+        margin-right: 12px;
+        transition: all 200ms ease-in-out, border-width 0ms linear;
+    }
+}
+
+.label {
+    margin-top: rem(3px);
+}
+
+.checkbox {
+    
+    pre {
+        width: 24px;
+        height: 24px;
+        border-radius: rem(4px);
+        border: 1px solid var(--lilac);
+    }
+
+    &:hover {
+
+        pre {
+            border-width: 2px;
+        }
+    }
 
 }
+    .selected {
+
+        pre {
+            background-color: var(--lilac);
+        }
+    }
 </style>
