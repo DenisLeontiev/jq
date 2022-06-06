@@ -4,29 +4,16 @@
       <IconsMap />
     </div>
 
-    <Button
-      variant="gradient"
-      prependIcon="Like"
-    >
-      test
-    </Button>
-
-    <TagButtons>
-      <TagButton 
-        label="tag"
-      />
-      <TagButton 
-        label="tag 2"
-      />
-    </TagButtons>
+    <Chackbox 
+      label="test"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import Button from './components/Ui/Button/Button.vue';
-import TagButtons from './components/Ui/TagButton/TagButtons.vue';
-import TagButton from './components/Ui/TagButton/TagButton.vue';
 import IconsMap from './components/Ui/Icon/IconsMap.vue';
+
+import Chackbox from './components/Ui/Checkbox/Checkbox.vue';
 </script>
 
 <style lang="scss" module>
