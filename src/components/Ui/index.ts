@@ -4,3 +4,4 @@ export * from "./Form";
 export * from "./Input";
 export * from "./Icon";
 export * from "./Breadcrumbs";
+export * from "./Pagination";
