@@ -3,20 +3,11 @@
     <div :class="$style.sprite">
       <IconsMap />
     </div>
-    <Input
-        v-model="test"
-        placeholder="asdasd"
-        type="text"
-        state="state"
-        inputClass="inputClass"
-        :rows="4"
-        mask=""
-        :autofocus="false"
-        label="label"
-        :disabled="false"
-        :required="false"
+    <Breadcrumbs
+      :path="'/lohi'"
+      :items="[{title: 'Главная', href: '' }, {title: 'Сотрудники', href: '/lohi' }]"
     />
-    {{ test }}
+    {{ route }}
     <Checkbox
       label="test"
     />
@@ -24,11 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import IconsMap from './components/Ui/Icon/IconsMap.vue';
+import IconsMap from "./components/Ui/Icon/IconsMap.vue";
 
-import Chackbox from './components/Ui/Checkbox/Checkbox.vue';
-let test = ''
-import Input from "./components/Ui/Input/Input.vue";
+import Checkbox from "./components/Ui/Checkbox/Checkbox.vue";
+import Breadcrumbs from "./components/Ui/Breadcrumbs/Breadcrumbs.vue";
 </script>
 
 <style lang="scss" module>

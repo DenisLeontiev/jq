@@ -11,12 +11,12 @@
     meta="meta"
     trigger-class="triggerClass"
     :as-label="false"
-    @focus="onFocus($event, false)"
     :input-class="inputClass"
     :icon-class="inputClass"
     prepend-icon="Like"
     append-icon="Like"
     name="Test"
+    @focus="onFocus($event, false)"
   >
     <input
       v-if="type === 'text'"
@@ -54,7 +54,7 @@ import {
 import Field from "../Field/Field.vue";
 import { type InputProps } from "./index";
 import { useFormField } from "../Form";
-import { useInputMask, useToggle } from "../../../common/src/hooks";
+// import { useInputMask, useToggle } from "../../../common/src/hooks";
 import { TypedFocusEvent } from "../../../common/src/types";
 
 const props = withDefaults(defineProps<InputProps>(), {});
@@ -66,7 +66,7 @@ const emit = defineEmits<{
 
 const { value } = useFormField(toRef(props, "name"), { props, emit });
 
-const [focused,,, { show, hide }] = useToggle();
+// const [focused,,, { show, hide }] = useToggle();
 
 const inputRef = ref<HTMLInputElement>();
 
@@ -77,11 +77,11 @@ const onFocus = (event: TypedFocusEvent, fromInput: boolean) => {
   if (!fromInput && inputRef.value) {
     inputRef.value.focus();
   }
-  show();
+  // show();
 };
 
 const onBlur = () => {
-  hide();
+  // hide();
 };
 
 const isEmpty = computed(() => !value.value);
@@ -92,10 +92,10 @@ const togglePasswordVisibility = () => {
   passwordVisible.value = !passwordVisible.value;
 };
 
-useInputMask(
+/* useInputMask(
   inputRef,
   toRef(props, "mask"),
-);
+); */
 
 watchEffect(() => {
   if (!inputRef.value) {

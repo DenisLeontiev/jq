@@ -1,5 +1,3 @@
-import { CommonFormFieldProps } from "../Form";
-
 export { default as UiCheckbox } from "./Checkbox.vue";
 
 export enum CheckboxVariant {

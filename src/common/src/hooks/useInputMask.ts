@@ -1,8 +1,7 @@
 import { watchEffect } from "vue";
 import { OptionalRef } from "../types";
-/* eslint-disable @typescript-eslint/no-var-requires */
 
-export const getPhoneInputmask = () => {
+/* export const getPhoneInputmask = () => {
   const Inputmask = require("inputmask").default;
   const InputmaskPhone = require("inputmask.phone");
   const InputmaskPhoneCodes = require("inputmask.phone/dist/inputmask.phone/phone-codes/phone");
@@ -47,4 +46,4 @@ export const useInputMask = (
   return {
     isValid,
   };
-};
+}; */
