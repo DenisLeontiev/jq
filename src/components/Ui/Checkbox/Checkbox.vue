@@ -36,7 +36,7 @@
 import {
   computed, toRef,
 } from "vue";
-import { useField } from "../../../common/src/hooks/useForm";
+import { useField } from "../../../common/hooks/useForm";
 import { type CheckboxProps, CheckboxSize, CheckboxVariant } from "./index";
 import Icon from "../Icon/Icon.vue";
 

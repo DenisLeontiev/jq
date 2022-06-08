@@ -54,8 +54,8 @@ import {
 import Field from "../Field/Field.vue";
 import { type InputProps } from "./index";
 import { useFormField } from "../Form";
-// import { useInputMask, useToggle } from "../../../common/src/hooks";
-import { TypedFocusEvent } from "../../../common/src/types";
+// import { useInputMask, useToggle } from "../../../common";
+import { TypedFocusEvent } from "../../../common";
 
 const props = withDefaults(defineProps<InputProps>(), {});
 
