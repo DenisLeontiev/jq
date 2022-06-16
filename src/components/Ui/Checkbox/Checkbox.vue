@@ -30,8 +30,9 @@
 import {
   computed, toRef,
 } from "vue";
-import { useField } from "../../../common/src/hooks/useForm";
-import { type CheckboxProps, CheckboxVariant } from "./index";
+import { useField } from "../../../common/hooks/useForm";
+import { type CheckboxProps, CheckboxSize, CheckboxVariant } from "./index";
+import Icon from "../Icon/Icon.vue";
 
 const props = withDefaults(defineProps<CheckboxProps>(), {
   modelValue: false,
@@ -84,7 +85,6 @@ const toggle = () => {
 }
 
 .checkbox {
-    
     pre {
         width: 24px;
         height: 24px;
@@ -98,7 +98,6 @@ const toggle = () => {
             border-width: 2px;
         }
     }
-
 }
     .selected {
 

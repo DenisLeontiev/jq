@@ -3,3 +3,7 @@ export * from "./Field";
 export * from "./Form";
 export * from "./Input";
 export * from "./Icon";
+export * from "./Breadcrumbs";
+export * from "./Pagination";
+export * from "./Avatar";
+export * from "./Pic";
