@@ -7,9 +7,8 @@ export {
 } from "./types";
 
 export interface AvatarProps {
-    userId?: number;
     src?: string;
-    username?: string;
-    icon?: string;
+    text?: string;
+    border?: boolean;
     size?: AvatarSize;
 }

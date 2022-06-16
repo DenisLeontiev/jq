@@ -1,5 +1,3 @@
-
-
 export { default as UiIcon } from "./Icon.vue";
 export { default as UiIconsMap } from "./IconsMap.vue";
 

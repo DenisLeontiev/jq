@@ -1,20 +1,28 @@
 <template>
+  <Sidebar :class="$style.sidebar" />
   <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <router-link to="/">
+      Home
+    </router-link> |
+    <router-link to="/about">
+      About
+    </router-link>
   </div>
   <router-view />
   <div :class="$style.app">
     <div :class="$style.sprite">
       <IconsMap />
+      <LogosMap />
     </div>
 
-    <Checkbox 
+    <Checkbox
       name="examp"
       label="label"
       :model-value="isFree"
     >
-      <template #label>foo bar</template>
+      <template #label>
+        foo bar
+      </template>
     </Checkbox>
     <Breadcrumbs
       :path="'/lohi'"
@@ -29,9 +37,11 @@
 
 <script setup lang="ts">
 import IconsMap from "./components/Ui/Icon/IconsMap.vue";
+import LogosMap from "./components/Ui/Logo/LogosMap.vue";
 
 import Checkbox from "./components/Ui/Checkbox/Checkbox.vue";
 import Breadcrumbs from "./components/Ui/Breadcrumbs/Breadcrumbs.vue";
+import Sidebar from "./components/Sidebar/Sidebar.vue";
 </script>
 
 <style lang="scss" module>
@@ -52,5 +62,10 @@ import Breadcrumbs from "./components/Ui/Breadcrumbs/Breadcrumbs.vue";
 }
 .app {
 
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 </style>

@@ -2,19 +2,18 @@
   <component
     :is="component"
     v-for="[icon, component] in icons"
-    :id="`icon-${icon}`"
+    :id="`logo-${icon}`"
     :key="icon"
   />
 </template>
 
 <script lang="ts" setup>
-import { clearIconName } from "./index";
+import { clearLogoName } from "./index";
 
 const icons = (Object.entries(
   import.meta.globEager<any>("./assets/*.svg"),
-))
-  .map(([key, value]) => ([
-    clearIconName(key),
-    value.default,
-  ]));
+)).map(([key, value]) => ([
+  clearLogoName(key),
+  value.default,
+]));
 </script>

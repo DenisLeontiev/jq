@@ -34,11 +34,6 @@ defineExpose(props);
 
   --icon-bg: transparent;
 
-  &.variant {
-    padding: rem(4px);
-    color: var(--color-White_1);
-  }
-
   &:not(.colored) {
     .source {
       fill: currentColor;

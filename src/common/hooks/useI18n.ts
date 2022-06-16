@@ -1,4 +1,4 @@
-import { Composer, useI18n as coreUseI18n } from "vue-i18n";
+/* import { Composer, useI18n as coreUseI18n } from "vue-i18n";
 import { Optional } from "../types";
 
 type I18n = Composer;
@@ -16,4 +16,4 @@ export const useI18n = (prefix?: string) => {
     i18n,
     t,
   };
-};
+}; */
