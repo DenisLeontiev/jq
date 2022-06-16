@@ -16,6 +16,7 @@
       :fit="PicFit.cover"
     />
     <svg
+      v-else
       :class="$style.text"
       viewBox="0 0 140 140"
     >

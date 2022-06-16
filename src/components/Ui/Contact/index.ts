@@ -10,6 +10,7 @@ export interface ContactProps {
     variant?: ContactVariant
     href: string
     label: string
+    disable?: boolean
 }
 
 export const contactVariants = [

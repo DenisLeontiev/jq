@@ -37,10 +37,10 @@
         variant="Mapmarker"
         href="https://yandex.ru/maps/-/CCUJfCXo3A"
         label="143500 РФ г. Москва, ул. <br />Ленина 75"
+        :disable="true"
         :class="$style.contact"
       />
     </div>
-    contacts
     nav
   </div>
 </template>

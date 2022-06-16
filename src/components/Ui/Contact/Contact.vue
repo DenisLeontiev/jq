@@ -1,7 +1,16 @@
 <template>
-  <a :href="href" :class="$style.contact">
-    <UiIcon :icon="variant" :class="$style.icon" />
-    <div :class="$style.link" v-html="label" />
+  <a
+    :href="href"
+    :class="[$style.contact, disable && $style.disable]"
+  >
+    <UiIcon
+      :icon="variant"
+      :class="$style.icon"
+    />
+    <div
+      :class="$style.link"
+      v-html="label"
+    />
   </a>
 </template>
 
@@ -25,6 +34,11 @@ withDefaults(
   justify-content: center;
   align-items: flex-start;
   cursor: pointer;
+  &.disable {
+    .link, .icon {
+      color: #B3BDC7;
+    }
+  }
   &:hover {
     .link {
       text-decoration: underline;
