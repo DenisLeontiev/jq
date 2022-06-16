@@ -11,7 +11,30 @@ export const finalizeViteConfig = async (
 ): Promise<UserConfig> => (mergeConfig(config, {
   plugins: [
     vue(),
-    svgLoader(),
+    svgLoader({
+      svgoConfig: {
+        plugins: [
+          "removeDimensions",
+          {
+            name: "removedFills",
+            type: "perItem",
+            fn(item) {
+              if (item.type === "element" && item.name === "svg") {
+                // eslint-disable-next-line no-param-reassign
+                delete item.attributes.fill;
+              }
+
+              if (item.type === "element" && item.name === "path") {
+                if (item.attributes.fill === "#A1A1A5") {
+                  // eslint-disable-next-line no-param-reassign
+                  delete item.attributes.fill;
+                }
+              }
+            },
+          },
+        ],
+      },
+    }),
     vueTypeImports(),
   ],
   css: {
