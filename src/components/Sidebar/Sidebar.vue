@@ -41,7 +41,7 @@
         :class="$style.contact"
       />
     </div>
-    nav
+    <SidebarNav :class="$style.nav" />
   </div>
 </template>
 
@@ -50,6 +50,7 @@ import UiLogo from "../Ui/Logo/Logo.vue";
 import UiAvatar from "../Ui/Avatar/Avatar.vue";
 import UiContact from "../Ui/Contact/Contact.vue";
 import SidebarSelect from "./SidebarSelect.vue";
+import SidebarNav from "./SidebarNav.vue";
 
 </script>
 

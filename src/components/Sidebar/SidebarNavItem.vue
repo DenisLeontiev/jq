@@ -1,0 +1,64 @@
+<template>
+  <component
+    :is="component"
+    :to="props.to"
+    :exact="isLink ? exact : undefined"
+    :active-class="!exact ? $style.selected : undefined"
+    :exact-active-class="exact ? $style.selected : undefined"
+    :class="$style.item"
+    @click="onClick"
+  >
+    <UiIcon
+      :icon="icon"
+      :class="$style.icon"
+    />
+    <div
+      :class="$style.label"
+      v-html="label"
+    />
+  </component>
+</template>
+
+<script lang="ts" setup>
+import { computed } from "vue";
+import { RouteLocationRaw } from "vue-router";
+import UiIcon from "../Ui/Icon/Icon.vue";
+
+const props = defineProps<{
+  icon: string;
+  label: string;
+  exact?: boolean;
+  to?: RouteLocationRaw;
+  handler?(event: MouseEvent): void;
+}>();
+
+const isLink = computed(() => (
+  !!props.to
+));
+
+const component = computed(() => (
+  isLink.value ? "router-link" : "div"
+));
+
+const emit = defineEmits<{
+  (e: "click", event: MouseEvent): void;
+}>();
+
+const onClick = (event: MouseEvent) => {
+  emit("click", event);
+};
+</script>
+
+<style lang="scss" module>
+@import "../../assets/utils";
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.icon {
+  width: rem(24px);
+  height: rem(24px);
+  margin-right: rem(28px);
+}
+</style>
