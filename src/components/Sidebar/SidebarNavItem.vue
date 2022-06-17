@@ -55,10 +55,25 @@ const onClick = (event: MouseEvent) => {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  color: #B3BDC7;
+  cursor: pointer;
+  &.selected {
+    color: #5F00FF;
+  }
+  &:hover {
+    .label {
+      text-decoration: underline;
+    }
+  }
 }
 .icon {
   width: rem(24px);
   height: rem(24px);
   margin-right: rem(28px);
+}
+.label {
+  font-weight: 700;
+  font-size: rem(14px);
+  line-height: rem(20px);
 }
 </style>

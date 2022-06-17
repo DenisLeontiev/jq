@@ -58,7 +58,7 @@ import SidebarNav from "./SidebarNav.vue";
 @import "../../assets/utils";
 .sidebar {
   border-right: 1px solid #EAEEF1 ;
-  padding: rem(24px) rem(36px);
+  padding: rem(24px) 0 rem(24px) rem(36px);
 
   width: rem(284px);
   height: 100vh;
@@ -110,5 +110,9 @@ import SidebarNav from "./SidebarNav.vue";
   &:not(:last-child) {
     margin-bottom: rem(8px);
   }
+}
+.nav {
+  margin-top: rem(20px);
+  margin-left: rem(36px);
 }
 </style>

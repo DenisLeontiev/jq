@@ -79,9 +79,12 @@ const onMenuItemClick = (item: Item, event: MouseEvent) => {
 <style lang="scss" module>
 @import "../../assets/utils";
 .nav {
+  width: 100%;
+  border-top: 1px solid #EAEEF1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-top: rem(32px);
 }
 .item {
   margin-bottom: rem(40px);
