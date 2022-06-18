@@ -1,45 +1,47 @@
 <template>
   <div :class="$style.sidebar">
-    <div :class="$style.logoWrapper">
-      <UiLogo :class="$style.logo" />
-    </div>
-    <div :class="$style.avatarWrapper">
-      <UiAvatar
-        src="https://picsum.photos/300/300"
-        :border="true"
-        :class="$style.avatar"
-      />
-      <UiAvatar
-        :size="46"
-        text="All"
-        :border="true"
-        :class="$style.subavatar"
-      />
-    </div>
-    <div :class="$style.title">
-      Константин Чижов
-    </div>
-    <SidebarSelect :class="$style.select" />
-    <div :class="$style.list">
-      <UiContact
-        variant="Email"
-        href="mailto:curtis.we@example.com"
-        label="curtis.we@example.com"
-        :class="$style.contact"
-      />
-      <UiContact
-        variant="Phone"
-        href="tel:86035550123"
-        label="(603) 555-0123"
-        :class="$style.contact"
-      />
-      <UiContact
-        variant="Mapmarker"
-        href="https://yandex.ru/maps/-/CCUJfCXo3A"
-        label="143500 РФ г. Москва, ул. <br />Ленина 75"
-        :disable="true"
-        :class="$style.contact"
-      />
+    <div :class="$style.card">
+      <div :class="$style.logoWrapper">
+        <UiLogo :class="$style.logo" />
+      </div>
+      <div :class="$style.avatarWrapper">
+        <UiAvatar
+          src="https://picsum.photos/300/300"
+          :border="true"
+          :class="$style.avatar"
+        />
+        <UiAvatar
+          :size="46"
+          text="All"
+          :border="true"
+          :class="$style.subavatar"
+        />
+      </div>
+      <div :class="$style.title">
+        Константин Чижов
+      </div>
+      <SidebarSelect :class="$style.select" />
+      <div :class="$style.list">
+        <UiContact
+          variant="Email"
+          href="mailto:curtis.we@example.com"
+          label="curtis.we@example.com"
+          :class="$style.contact"
+        />
+        <UiContact
+          variant="Phone"
+          href="tel:86035550123"
+          label="(603) 555-0123"
+          :class="$style.contact"
+        />
+        <UiContact
+          variant="Mapmarker"
+          href="https://yandex.ru/maps/-/CCUJfCXo3A"
+          label="143500 РФ г. Москва, ул. <br />Ленина 75"
+          :disable="true"
+          :class="$style.contact"
+        />
+      </div>
     </div>
     <SidebarNav :class="$style.nav" />
   </div>
@@ -61,14 +63,20 @@ import SidebarNav from "./SidebarNav.vue";
   padding: rem(24px) 0 rem(24px) rem(36px);
 
   width: rem(284px);
-  height: 100vh;
-
-  background-color: red;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  padding-right: rem(8px);
 }
 .logoWrapper {
   width: rem(43px);
@@ -113,6 +121,5 @@ import SidebarNav from "./SidebarNav.vue";
 }
 .nav {
   margin-top: rem(20px);
-  margin-left: rem(36px);
 }
 </style>

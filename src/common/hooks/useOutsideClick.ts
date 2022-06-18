@@ -4,16 +4,16 @@ import {
 import { isSSR } from "../utils";
 
 export interface OutsideClickHandler {
-    (event: MouseEvent): void;
+  (event: MouseEvent): void;
 }
 
 export interface OutsideClickSubscriber {
-    handler: OutsideClickHandler
+  handler: OutsideClickHandler
 }
 
 export interface OutsideClickContext {
-    add(handler: OutsideClickSubscriber): OutsideClickSubscriber;
-    remove(handler: OutsideClickSubscriber): void;
+  add(handler: OutsideClickSubscriber): OutsideClickSubscriber;
+  remove(handler: OutsideClickSubscriber): void;
 }
 
 export const outsideClickInjectionKey: InjectionKey<OutsideClickContext> = Symbol("outsideClick");

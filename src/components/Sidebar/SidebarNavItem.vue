@@ -58,7 +58,7 @@ const onClick = (event: MouseEvent) => {
   color: #B3BDC7;
   cursor: pointer;
   &.selected {
-    color: #5F00FF;
+    color: var(--lilac);
   }
   &:hover {
     .label {

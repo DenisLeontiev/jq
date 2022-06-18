@@ -15,3 +15,4 @@ export * from "./useGesture";
 export * from "./useTheme";
 export * from "./useInputMask";
 export * from "./useToggle";
+export * from "./usePopup";

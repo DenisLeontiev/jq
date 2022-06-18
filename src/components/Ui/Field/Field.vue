@@ -1,6 +1,7 @@
 <template>
   <div
-      :class="[
+    ref="fieldRef"
+    :class="[
       $style.root,
       disabled && $style.disabled,
       required && $style.required,
@@ -11,70 +12,65 @@
       touched && $style.touched,
       prependIcon && $style.hasPrependIcon
     ]"
+    @click="emit('click', $event)"
   >
     <div :class="$style.container">
       <div
-          v-if="prependIcon || 'prepend' in $slots"
-          :class="$style.prepend"
+        v-if="prependIcon || 'prepend' in $slots"
+        :class="$style.prepend"
       >
         <slot
-            name="prepend"
-            :icon-name="$style.icon"
+          name="prepend"
+          :icon-name="$style.icon"
         >
           <Icon
-              :package="null"
-              :icon="prependIcon"
-              :class="$style.icon"
+            :package="null"
+            :icon="prependIcon"
+            :class="$style.icon"
           />
         </slot>
       </div>
-      <div
-          v-if="content || 'default' in $slots"
-          :class="$style.content"
-      >
-        <slot>
-          <div :class="$style.label">
-            <span :class="$style.labelContent">{{ label }}</span>
-          </div>
-          <div
-              v-if="suffix"
-              :class="$style.suffix"
-          >
-            <span>{{ suffix }}</span>
-          </div>
-          <div
-              v-if="postfix"
-              :class="$style.postfix"
-          >
-            <span><span
-                :class="$style.displayValue"
-            >{{ displayValue || '' }}</span>{{ postfix }}</span>
-          </div>
-          <span
-              v-if="!empty"
-              :class="$style.value"
-          >{{ content }}</span>
-        </slot>
+      <div :class="$style.content">
+        <div :class="$style.label">
+          <span :class="$style.labelContent">{{ label }}</span>
+        </div>
+        <div
+          v-if="suffix && !empty"
+          :class="$style.suffix"
+        >
+          <span>{{ suffix }}</span>
+        </div>
+        <div
+          v-if="postfix && !empty"
+          :class="$style.postfix"
+        >
+          <span><span
+            :class="$style.displayValue"
+          >{{ displayValue || '' }}</span>{{ postfix }}</span>
+        </div>
+        <span :class="$style.value">
+          <slot>{{ content }}</slot>
+        </span>
       </div>
       <div
-          v-if="appendIcon || 'append' in $slots"
-          :class="$style.append"
+        v-if="appendIcon || 'append' in $slots"
+        :class="$style.append"
       >
         <slot
-            name="append"
-            :icon-name="$style.icon"
+          name="append"
+          :icon-name="$style.icon"
         >
           <Icon
-              :package="null"
-              :icon="appendIcon"
-              :class="$style.icon"
+            :package="null"
+            :icon="appendIcon"
+            :class="$style.icon"
           />
         </slot>
       </div>
     </div>
     <div
-        v-if="meta"
-        :class="$style.footer"
+      v-if="meta"
+      :class="$style.footer"
     >
       <div :class="$style.meta">
         {{ meta }}
@@ -84,16 +80,14 @@
 </template>
 
 <script lang="ts" setup>
-import { useField, useFocus } from "../../../common";
-import { computed, toRef } from "vue";
+import {
+  computed, ref, toRef, watchEffect,
+} from "vue";
+import { useField } from "../../../common";
 import { type FieldProps } from "./index";
 import Icon from "../Icon/Icon.vue";
 
-const props = withDefaults(defineProps<FieldProps>(), {});
-
-const emit = defineEmits<{
-  (event: "update:focused", value: boolean): void
-}>();
+const props = defineProps<FieldProps>();
 
 const {
   touched,
@@ -102,11 +96,15 @@ const {
 
 const hasError = computed(() => !!error.value.length);
 
-const {
-  focused,
-  onFocus,
-  onBlur,
-} = useFocus();
+const emit = defineEmits<{
+  (e: "click", event: MouseEvent): void
+  (e: "mounted", event: HTMLElement | undefined): void
+}>();
+
+const fieldRef = ref<HTMLElement>();
+watchEffect(() => {
+  emit("mounted", fieldRef.value);
+});
 </script>
 
 <style lang="scss" module>

@@ -3,9 +3,11 @@
     :class="[
       $style.icon,
       colored && $style.colored,
+      custom && $style.custom
     ]"
+    :data-icon="icon"
   >
-    <svg :class="$style.source">
+    <svg v-if="!custom" :class="$style.source">
       <use :xlink:href="`#icon-${icon}`" />
     </svg>
   </div>
@@ -33,47 +35,9 @@ defineExpose(props);
   position: relative;
 
   --icon-bg: transparent;
-
-  &:not(.colored) {
-    .source {
-      fill: currentColor;
-    }
-  }
-
-  &.red {
-    --icon-bg: var(--color-Red_3);
-  }
-
-  &.lightBlue {
-    --icon-bg: #40C6FF;
-  }
-
-  &.yellow {
-    --icon-bg: #FFAD4C;
-  }
-
-  &.violet {
-    --icon-bg: #9730FF;
-  }
-
-  &.blue {
-    --icon-bg: #4892F3;
-  }
-
-  &.green {
-    --icon-bg: #3EAC5D;
-  }
-
-  &.black {
-    --icon-bg: #202020;
-  }
-
-  &.pink {
-    --icon-bg: var(--color-Pink_1);
-  }
-
-  &.blueGray {
-    --icon-bg: var(--color-Blue_Gray_1);
+  &.custom {
+    background-image: url('../../../assets/svg/#{attr(data-icon)}.svg');
+    @extend %background-contain;
   }
 }
 
@@ -87,6 +51,7 @@ defineExpose(props);
 }
 
 .source {
+  fill: currentColor;
   position: relative;
   display: block;
   flex-grow: 1;
