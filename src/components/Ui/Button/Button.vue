@@ -100,110 +100,110 @@ const onClick = (event: MouseEvent) => {
 </script>
 
 <style lang="scss" module>
-    @import '../../../assets/utils';
+@import '../../../assets/utils';
 
-    .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 44px;
-        padding: 12px 24px;
-        gap: 12px;
-        border-radius: 22px;
-        cursor: pointer;
-        transition: all 200ms ease-in-out;
-        border: none;
-        box-shadow: none;
-        font-weight: 700;
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 12px 24px;
+    gap: 12px;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    border: none;
+    box-shadow: none;
+    font-weight: 700;
+}
+
+.primary {
+    background-color: var(--lilac);
+    color: #fff;
+
+    @include fieldState {
+        background-color: var(--lilac-hover);
     }
+}
 
-    .primary {
+.secondary {
+    background-color: var(--violet);
+    color: var(--lilac);
+
+    @include fieldState {
         background-color: var(--lilac);
         color: #fff;
-
-        @include fieldState {
-            background-color: var(--lilac-hover);
-        }
     }
+}
 
-    .secondary {
+.outline {
+    background-color: transparent;
+    color: var(--lilac);
+    border: 1px solid var(--lilac);
+
+    @include fieldState {
         background-color: var(--violet);
-        color: var(--lilac);
-
-        @include fieldState {
-            background-color: var(--lilac);
-            color: #fff;
-        }
     }
+}
 
-    .outline {
-        background-color: transparent;
-        color: var(--lilac);
-        border: 1px solid var(--lilac);
+.outlineWhite {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
 
-        @include fieldState {
-            background-color: var(--violet);
-        }
-    }
-
-    .outlineWhite {
-        background-color: transparent;
-        color: #fff;
-        border: 1px solid #fff;
-
-        @include fieldState {
-            background-color: #fff;
-            color: var(--lilac);
-        }
-    }
-
-    .white {
+    @include fieldState {
         background-color: #fff;
         color: var(--lilac);
-        border: 1px solid #fff;
+    }
+}
 
-        @include fieldState {
-            border-color: var(--lilac);
-            color: var(--lilac);
-        }
+.white {
+    background-color: #fff;
+    color: var(--lilac);
+    border: 1px solid #fff;
+
+    @include fieldState {
+        border-color: var(--lilac);
+        color: var(--lilac);
+    }
+}
+
+.gradient {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: calc(100% + 20px);
+        height: 100%;
+        left: -20px;
+        top: 0;
+        background: var(--gradient);
+        transition: 200ms ease-in-out;
+        user-select: none;
     }
 
-    .gradient {
-        position: relative;
-        overflow: hidden;
-        color: #fff;
+    @include fieldState {
 
         &::before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            width: calc(100% + 20px);
-            height: 100%;
-            left: -20px;
-            top: 0;
-            background: var(--gradient);
-            transition: 200ms ease-in-out;
-            user-select: none;
-        }
-
-        @include fieldState {
-
-            &::before {
-                transform: translateX(20px);
-            }
+            transform: translateX(20px);
         }
     }
+}
 
-    .disabled {
-        opacity: .3;
-        user-select: none;
-        pointer-events: none;
-        touch-action: none;
-    }
+.disabled {
+    opacity: .3;
+    user-select: none;
+    pointer-events: none;
+    touch-action: none;
+}
 
-    .icon {
-        flex-shrink: 0;
-        width: 24px;
-        height: 24px;
-    }
+.icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
 </style>

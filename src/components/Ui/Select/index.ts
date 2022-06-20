@@ -14,6 +14,7 @@ export interface SelectProps {
     badge?: string | number;
     empty?: boolean;
     error?: string | string[];
+    customIcon?: boolean;
 
     asPopup?: boolean;
     modelValue?: any | Array<any>;

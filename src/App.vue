@@ -52,6 +52,7 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
   height: 100vh;
   display: flex;
 }
-.sidebar {
+.page {
+  flex-grow: 1;
 }
 </style>

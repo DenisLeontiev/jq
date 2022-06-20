@@ -3,11 +3,14 @@
     :class="[
       $style.icon,
       colored && $style.colored,
-      custom && $style.custom
+      custom && $style.custom,
+      custom && $style[icon],
     ]"
-    :data-icon="icon"
   >
-    <svg v-if="!custom" :class="$style.source">
+    <svg
+      v-if="!custom"
+      :class="$style.source"
+    >
       <use :xlink:href="`#icon-${icon}`" />
     </svg>
   </div>
@@ -36,8 +39,10 @@ defineExpose(props);
 
   --icon-bg: transparent;
   &.custom {
-    background-image: url('../../../assets/svg/#{attr(data-icon)}.svg');
     @extend %background-contain;
+  }
+  &.Chevrondown {
+    background-image: url('../../../assets/svg/Chevrondown.svg');
   }
 }
 

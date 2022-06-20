@@ -62,6 +62,7 @@
         >
           <Icon
             :package="null"
+            :custom="customIcon"
             :icon="appendIcon"
             :class="$style.icon"
           />
@@ -190,23 +191,22 @@ watchEffect(() => {
   background: var(--background);
 
   border-radius: rem(10px);
-  padding: rem(18px) rem(20px);
 }
 
 .icon {
-  height: rem(16px);
-  width: rem(16px);
+  height: rem(24px);
+  width: rem(24px);
   color: var(--color-Text_Light_Secondary);
 }
 
 .prepend + *,
 .content + * {
-  margin-left: rem(12px);
+  margin-left: rem(8px);
 }
 
 .content {
   flex-grow: 1;
-  width: 0;
+  // width: 0;
   //@include typography_Body_S;
   color: var(--color);
 

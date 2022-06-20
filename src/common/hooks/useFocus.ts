@@ -2,7 +2,6 @@ import { Ref } from "vue";
 import { useState } from "./useState";
 
 export const useFocus = (initialValue?: boolean, focusableRef?: Ref<HTMLElement | undefined>) => {
-  console.log('11');
   const [focused, setFocused] = useState<boolean>(initialValue || false);
 
   const onFocus = () => {

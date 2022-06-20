@@ -1,27 +1,39 @@
-export { default as UiButton } from './Button.vue';
+export { default as UiButton } from "./Button.vue";
+
+export enum ButtonSize {
+    xs = "xs",
+    s = "s",
+    m = "m",
+    l = "l"
+}
 
 export enum ButtonVariant {
-    primary = 'primary',
-    secondary = 'secondary',
-    outline = 'outline',
-    outlineWhite = 'outlineWhite',
-    white = 'white',
-    gradient = 'gradient'
+    primary = "primary",
+    secondary = "secondary",
+    tertiary = "tertiary",
+    outlinePrimary = "outlinePrimary",
+    outlineLight = "outlineLight",
+    danger = "danger",
+    outlineDanger = "outlineDanger",
+    dark = "dark",
+    text = "text"
 }
 
 export interface ButtonProps {
     to?: string | object
     target?: string;
     exact?: boolean;
-    type?: 'button' | 'submit';
+    type?: "button" | "submit";
     disabled?: boolean;
+    size?: ButtonSize;
     variant?: ButtonVariant;
     circle?: boolean;
+    wide?: boolean;
     prependIcon?: string;
     appendIcon?: string;
     label?: string;
     focusable?: boolean;
-    wide?: boolean;
+    square?: boolean;
 }
 
 export const buttonVariants = [

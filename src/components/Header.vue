@@ -1,35 +1,23 @@
 <template>
   <div :class="$style.header">
-    <UiSelect
-      v-model="value"
-      append-icon="Cog"
-      :options="options"
-    />
-    <UiIcon
-      icon="Chevrondown"
-      :custom="true"
-      :class="$style.icon"
-    />
+    <LangSwitcher :class="$style.langSwitcher" />
+    <UiButton to="add">Добавить сотрудника</UiButton>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import UiSelect from "./Ui/Select/Select.vue";
-import UiIcon from "./Ui/Icon/Icon.vue";
-
-const options = [
-  "All",
-  "2",
-  "3",
-  "4"];
-const value = ref<string>(options[0]);
+import LangSwitcher from "./LangSwitcher.vue";
+import UiButton from "./Ui/Button/Button.vue";
 </script>
 
 <style lang="scss" module>
-.header {}
-.icon {
-  width: 100px;
-  height: 100px;
+@import "../assets/utils";
+.header {
+  @extend %flex-end;
+  height: rem(92px);
+  padding-right: rem(36px);
+}
+.langSwitcher {
+  margin-right: rem(32px);
 }
 </style>

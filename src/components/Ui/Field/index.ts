@@ -37,22 +37,23 @@ export interface FieldProps {
     prependIcon: string;
     appendIcon: string;
     iconClass: string;
+    customIcon: boolean;
 }
 
 export const fieldStates = [
-    FieldState.filled,
-    FieldState.bordered,
-    FieldState.underline,
+  FieldState.filled,
+  FieldState.bordered,
+  FieldState.underline,
 ];
 
 export const fieldOuterStates = [
-    FieldOuterState.default,
-    FieldOuterState.underline,
-    FieldOuterState.password,
-    FieldOuterState.auth,
+  FieldOuterState.default,
+  FieldOuterState.underline,
+  FieldOuterState.password,
+  FieldOuterState.auth,
 ];
 
 export const fieldSizes = [
-    FieldSize.medium,
-    FieldSize.default,
+  FieldSize.medium,
+  FieldSize.default,
 ];

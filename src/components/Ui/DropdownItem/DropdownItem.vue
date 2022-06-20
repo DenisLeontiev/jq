@@ -172,12 +172,15 @@ const onClick = (event: MouseEvent) => {
 }
 
 .dropdownItem {
-  --bg: var(--color-White_1);
+  font-weight: 600;
+  font-size: rem(12px);
+  line-height: rem(16px);
+  --bg: #ffffff;
   --item-x-padding: #{rem(0)};
   background-color: var(--bg);
 
   position: relative;
-  padding: rem(16px) var(--item-x-padding);
+  padding: rem(8px) var(--item-x-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -190,8 +193,10 @@ const onClick = (event: MouseEvent) => {
   .content {
     display: flex;
     align-items: flex-start;
-    // @include typography_Body_S;
-    color: var(--label-color);
+    font-weight: 600;
+    font-size: rem(12px);
+    line-height: rem(16px);
+    color: #030307;
   }
 
   .title {
@@ -223,7 +228,7 @@ const onClick = (event: MouseEvent) => {
 
   &:not(.mobile) {
     &:hover {
-      --bg: var(--color-Secondary_Gray_9);
+      --bg: #E6DDF6;
     }
 
     &:active,

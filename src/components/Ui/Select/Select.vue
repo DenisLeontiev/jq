@@ -217,16 +217,16 @@ useOutsideClick({
   display: flex;
   flex-direction: column;
 
-  box-shadow: inset 0 0 0 rem(2px) var(--color-Secondary_Gray_8);
-  background: var(--color-White_1);
+  box-shadow: 0 rem(4px) rem(20px) rgba(0, 0, 0, 0.1);
+  background: white;
 
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
 
-  border-bottom-right-radius: rem(10px);
-  border-bottom-left-radius: rem(10px);
+  border-bottom-right-radius: rem(5px);
+  border-bottom-left-radius: rem(5px);
 }
 
 .options {
@@ -235,7 +235,7 @@ useOutsideClick({
 }
 
 .option {
-  --item-x-padding: #{rem(20px)};
+  --item-x-padding: #{rem(4px)};
   --bg: transparent;
   color: var(--color-Text_Light_Primary);
 }
