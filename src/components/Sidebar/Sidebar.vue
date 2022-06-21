@@ -13,7 +13,6 @@
         <UiAvatar
           :size="46"
           text="All"
-          :border="true"
           :class="$style.subavatar"
         />
       </div>

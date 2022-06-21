@@ -12,9 +12,12 @@
 </template>
 
 <script lang="ts" setup>
+import { useRoute } from "vue-router";
 import { type BreadcrumbsProps } from "./index";
 
 const props = withDefaults(defineProps<BreadcrumbsProps>(), {});
+
+const { path } = useRoute();
 </script>
 
 <style lang="scss" module>

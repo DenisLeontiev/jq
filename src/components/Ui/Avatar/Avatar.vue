@@ -3,6 +3,7 @@
     :class="[
       $style.avatar,
       border && $style.border,
+      (!src && text) && $style.border,
       $style[`size-s${size}`]
     ]"
   >
@@ -61,6 +62,7 @@ watchEffect(() => {
   border-radius: 100%;
 
   transition: background-color .25s ease;
+  box-shadow: 0 rem(4px) rem(14px) rgba(117, 0, 255, 0.15);
 
   &.size-s98 {
     width: rem(98px);
@@ -79,6 +81,13 @@ watchEffect(() => {
   &.size-s46 {
     width: rem(46px);
     height: rem(46px);
+    &.border {
+      background: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
+    }
+  }
+  &.size-s100 {
+    width: rem(100px);
+    height: rem(100px);
     &.border {
       background: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
     }
@@ -113,6 +122,6 @@ watchEffect(() => {
   transition: opacity .25s ease;
 
   font-weight: 700;
-  font-size: rem(52px);
+  font-size: rem(40px);
 }
 </style>

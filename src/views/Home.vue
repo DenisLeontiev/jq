@@ -3,10 +3,8 @@
     variant="outside"
     :class="$style.container"
   >
-    <UiBreadcrumbs :class="$style.breadcrumbs" />
-    <UiContainer :class="[$style.cell, $style.topLeft]">
-      1
-    </UiContainer>
+    <UiBreadcrumbs :items="breadcrumbs" :class="$style.breadcrumbs" />
+    <Restaurants :class="[$style.cell, $style.topLeft]" />
     <UiContainer :class="[$style.cell, $style.topRight]">
       2
     </UiContainer>
@@ -17,8 +15,15 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
 import UiContainer from "../components/Ui/Container/Container.vue";
 import UiBreadcrumbs from "../components/Ui/breadcrumbs/breadcrumbs.vue";
+import { BreadcrumbsItemProps } from "../components/Ui/Breadcrumbs";
+import Restaurants from "../components/Restaurants/Restaurants.vue";
+
+const breadcrumbs = ref<Array<BreadcrumbsItemProps>>(
+  [{ title: "Главная", to: "/" }],
+);
 </script>
 
 <style lang="scss" module>
