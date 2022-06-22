@@ -17,6 +17,13 @@
         :class="$style.item"
       />
     </div>
+    <UiPagination
+      :count="5"
+      :current="current"
+      variant="light"
+      :class="$style.pagination"
+      @setCurrent="setCurrent"
+    />
   </UiContainer>
 </template>
 
@@ -27,6 +34,7 @@ import UiContainer from "../Ui/Container/Container.vue";
 import ContainerHeader from "../ContainerHeader.vue";
 import { AvatarProps } from "../Ui/Avatar";
 import RestaurantsItem from "./RestaurantsItem.vue";
+import UiPagination from "../Ui/Pagination/Pagination.vue";
 
 interface Items extends AvatarProps {
   title?: string;
@@ -58,6 +66,10 @@ const items = ref<Array<Items>>(
     },
   ],
 );
+const current = ref<number>(1);
+const setCurrent = (value: number) => {
+  current.value = value;
+};
 </script>
 
 <style lang="scss" module>
@@ -79,5 +91,8 @@ const items = ref<Array<Items>>(
   &:nth-child(n + 4) {
     margin-top: rem(30px);
   }
+}
+.pagination {
+  margin-top: rem(28px);
 }
 </style>

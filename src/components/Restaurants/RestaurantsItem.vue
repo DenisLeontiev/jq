@@ -36,7 +36,7 @@ const props = defineProps<{
       box-shadow: 0 rem(4px) rem(14px) rgba(117, 0, 255, 0.45);
     }
     .title {
-      transform: translateY(#{rem(-10px)});
+      transform: translateY(#{rem(-6px)});
     }
   }
 }
