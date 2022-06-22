@@ -63,12 +63,13 @@ watchEffect(() => {
 
   transition: background-color .25s ease;
   box-shadow: 0 rem(4px) rem(14px) rgba(117, 0, 255, 0.15);
-
+  &.border {
+    background-image: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
+  }
   &.size-s98 {
     width: rem(98px);
     height: rem(98px);
     &.border {
-      background-image: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
       padding: rem(6px);
       position: relative;
       &:after {
@@ -78,19 +79,17 @@ watchEffect(() => {
       }
     }
   }
+  &.size-s36 {
+    width: rem(36px);
+    height: rem(36px);
+  }
   &.size-s46 {
     width: rem(46px);
     height: rem(46px);
-    &.border {
-      background: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
-    }
   }
   &.size-s100 {
     width: rem(100px);
     height: rem(100px);
-    &.border {
-      background: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
-    }
   }
   &:after {
     position: absolute;

@@ -5,9 +5,7 @@
   >
     <UiBreadcrumbs :items="breadcrumbs" :class="$style.breadcrumbs" />
     <Restaurants :class="[$style.cell, $style.topLeft]" />
-    <UiContainer :class="[$style.cell, $style.topRight]">
-      2
-    </UiContainer>
+    <Transactions :class="[$style.cell, $style.topRight]" />
     <UiContainer :class="[$style.cell, $style.bottom]">
       3
     </UiContainer>
@@ -20,6 +18,7 @@ import UiContainer from "../components/Ui/Container/Container.vue";
 import UiBreadcrumbs from "../components/Ui/breadcrumbs/breadcrumbs.vue";
 import { BreadcrumbsItemProps } from "../components/Ui/Breadcrumbs";
 import Restaurants from "../components/Restaurants/Restaurants.vue";
+import Transactions from "../components/Transactions/Transactions.vue";
 
 const breadcrumbs = ref<Array<BreadcrumbsItemProps>>(
   [{ title: "Главная", to: "/" }],

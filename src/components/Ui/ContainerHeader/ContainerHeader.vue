@@ -1,6 +1,9 @@
 <template>
   <div :class="$style.containerHeader">
-    <div :class="$style.title" v-html="title" />
+    <div
+      :class="$style.title"
+      v-html="title"
+    />
     <div :class="$style.content">
       <slot />
     </div>
@@ -8,13 +11,16 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
-  title: string;
-}>();
+import { ContainerHeaderProps } from "./index";
+
+withDefaults(
+  defineProps<ContainerHeaderProps>(),
+  {},
+);
 </script>
 
 <style lang="scss" module>
-@import "../assets/utils";
+@import "../../../assets/utils";
 .containerHeader {
   @extend %flex-start;
 }

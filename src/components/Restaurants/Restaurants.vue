@@ -1,11 +1,11 @@
 <template>
   <UiContainer :class="$style.restaurants">
-    <ContainerHeader
+    <UiContainerHeader
       :class="$style.header"
       title="Рестораны"
     >
       <UiTagButton label="Все" />
-    </ContainerHeader>
+    </UiContainerHeader>
     <div :class="$style.list">
       <RestaurantsItem
         v-for="item in items"
@@ -31,7 +31,7 @@
 import { ref } from "vue";
 import UiTagButton from "../Ui/TagButton/TagButton.vue";
 import UiContainer from "../Ui/Container/Container.vue";
-import ContainerHeader from "../ContainerHeader.vue";
+import UiContainerHeader from "../Ui/ContainerHeader/ContainerHeader.vue";
 import { AvatarProps } from "../Ui/Avatar";
 import RestaurantsItem from "./RestaurantsItem.vue";
 import UiPagination from "../Ui/Pagination/Pagination.vue";
