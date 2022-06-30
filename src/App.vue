@@ -69,6 +69,7 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
 }
 
 @import './assets/utils';
+@import './assets/normalize';
 @import './assets/typography';
 .sprite {
   position: absolute;
@@ -77,10 +78,10 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
   visibility: hidden;
   user-select: none;
   pointer-events: none;
+  width: 0;
+  height: 0;
 }
 .app {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   color: #030307;
 }
