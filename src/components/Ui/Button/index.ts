@@ -11,7 +11,7 @@ export enum ButtonVariant {
     primary = "primary",
     secondary = "secondary",
     tertiary = "tertiary",
-    outlinePrimary = "outlinePrimary",
+    outline = "outline",
     outlineLight = "outlineLight",
     danger = "danger",
     outlineDanger = "outlineDanger",

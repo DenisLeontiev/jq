@@ -25,9 +25,11 @@ withDefaults(
     padding: rem(20px);
   }
   &.outside {
-    padding: rem(36px);
+    padding: rem(20px) rem(36px) rem(36px) rem(36px);
     background-color: #FAFAFA;
     border-radius: rem(25px);
+    width: calc(100% - #{rem(36px)} * 2);
+    margin: 0 auto;
   }
 }
 </style>

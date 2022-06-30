@@ -1,13 +1,14 @@
 <template>
   <div :class="$style.breadcrumbs">
-    <a
-      v-for="item in items"
+    <component
+      v-for="(item, index) in items"
+      :is="index === items.length - 1 ? 'span' : 'a'"
       :key="item.title"
       :href="item.href"
-      :class="[$style.item, item.href === path && $style.active]"
+      :class="[$style.item, index === items.length - 1 && $style.active]"
     >
       {{ item.title }}
-    </a>
+    </component>
   </div>
 </template>
 
@@ -25,8 +26,13 @@ const { path } = useRoute();
 
 .breadcrumbs {
   display: flex;
+  flex-wrap: wrap;
+  margin-bottom: rem(-20px);
+  align-items: center;
 }
 .item {
+  display: inline-flex;
+  align-items: center;
   color: #C6C6C6;
   font-weight: 400;
   font-size: rem(10px);
@@ -35,12 +41,15 @@ const { path } = useRoute();
   &:hover {
     color: #545454;
   }
-  &.active {
-    color: #545454;
-    pointer-events: none;
-  }
   &:not(:last-child) {
     margin-right: rem(20px);
   }
+
+}
+.active {
+  user-select: none;
+  cursor: default;
+  color: #545454;
+  pointer-events: none;
 }
 </style>

@@ -8,12 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "chart.js": "^3.8.0",
     "deepmerge": "^4.2.2",
     "dot-object": "^2.1.4",
     "lodash": "^4.17.21",
     "pinia": "^2.0.14",
     "vite-svg-loader": "^3.1.2",
     "vue": "^3.2.25",
+    "vue-chart-3": "^3.1.8",
     "vue-router": "^4.0.13",
     "yup": "^0.32.11"
   },

@@ -91,6 +91,16 @@ watchEffect(() => {
     width: rem(100px);
     height: rem(100px);
   }
+
+  &.size-s160 {
+    width: rem(160px);
+    height: rem(160px);
+  }
+
+  &.size-s200 {
+    width: rem(200px);
+    height: rem(200px);
+  }
   &:after {
     position: absolute;
     top: 50%;
