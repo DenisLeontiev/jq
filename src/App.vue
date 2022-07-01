@@ -64,6 +64,8 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
   --gray: #8E8F91;
 
   --red: #E24949;
+  --white: #fff;
+  --black: #030307;
 
   --gradient: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
 }
@@ -83,7 +85,7 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
 }
 .app {
   display: flex;
-  color: #030307;
+  color: var(--black);
 }
 .page {
   flex-grow: 1;

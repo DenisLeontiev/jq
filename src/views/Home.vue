@@ -154,8 +154,127 @@
 
         <BarChart v-bind="barChartProps" />
       </div>
-      <div :class="$style.headPanel__bottom">
-        321
+
+      <div :class="[$style.headPanel__bottom, $style.statsByRules]">
+        <div :class="$style.statsByRule">
+          <div :class="$style.statsByRule__title">
+            Kitchen
+          </div>
+          <div :class="$style.statsByRule__info">
+            <UiIcon
+              icon="Kitchen"
+              :class="$style.statsByRule__svg"
+            />
+            <div :class="$style.statsByRule__values">
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😍</div>
+                160
+              </div>
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😐</div>
+                40
+              </div>
+            </div>
+            <div
+              :class="$style.pie"
+              style="--p:90;--c:var(--green)"
+            >
+              <div :class="$style.pie__value">90%</div>
+              <div :class="$style.pie__text">positive</div>
+              positive
+            </div>
+          </div>
+        </div>
+
+        <div :class="$style.statsByRule">
+          <div :class="$style.statsByRule__title">
+            Kitchen
+          </div>
+          <div :class="$style.statsByRule__info">
+            <UiIcon
+              icon="Kitchen"
+              :class="$style.statsByRule__svg"
+            />
+            <div :class="$style.statsByRule__values">
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😍</div>
+                160
+              </div>
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😐</div>
+                40
+              </div>
+            </div>
+            <div
+              :class="$style.pie"
+              style="--p:90;--c:var(--green)"
+            >
+              <div :class="$style.pie__value">90%</div>
+              <div :class="$style.pie__text">positive</div>
+              positive
+            </div>
+          </div>
+        </div>
+
+        <div :class="$style.statsByRule">
+          <div :class="$style.statsByRule__title">
+            Kitchen
+          </div>
+          <div :class="$style.statsByRule__info">
+            <UiIcon
+              icon="Kitchen"
+              :class="$style.statsByRule__svg"
+            />
+            <div :class="$style.statsByRule__values">
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😍</div>
+                160
+              </div>
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😐</div>
+                40
+              </div>
+            </div>
+            <div
+              :class="$style.pie"
+              style="--p:90;--c:var(--green)"
+            >
+              <div :class="$style.pie__value">90%</div>
+              <div :class="$style.pie__text">positive</div>
+              positive
+            </div>
+          </div>
+        </div>
+
+        <div :class="$style.statsByRule">
+          <div :class="$style.statsByRule__title">
+            Kitchen
+          </div>
+          <div :class="$style.statsByRule__info">
+            <UiIcon
+              icon="Kitchen"
+              :class="$style.statsByRule__svg"
+            />
+            <div :class="$style.statsByRule__values">
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😍</div>
+                160
+              </div>
+              <div :class="$style.statsByRule__value">
+                <div :class="$style.statsByRule__emoji">😐</div>
+                40
+              </div>
+            </div>
+            <div
+              :class="$style.pie"
+              style="--p:60;--c:#E24949;--gr:rgba(17, 187, 141, 0.1)"
+            >
+              <div :class="$style.pie__value">60%</div>
+              <div :class="$style.pie__text">negative</div>
+              negative
+            </div>
+          </div>
+        </div>
       </div>
     </UiContainer>
 
@@ -220,6 +339,161 @@ const { barChartProps } = useBarChart({
 
 <style lang="scss" module>
 @import "../assets/utils";
+
+.statsByRules {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: rem(20px);
+  margin: rem(28px) 0 0 0;
+}
+
+.statsByRule {
+  position: relative;
+  max-width: rem(226px);
+  padding: rem(8px);
+  gap: rem(12px);
+  margin: 0 auto;
+  box-shadow: 0px rem(2px) rem(8px) rgba(0, 0, 0, 0.08);
+  border-radius: rem(20px);
+
+  &:hover {
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &::before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: linear-gradient(90deg, rgba(131, 58, 180, 0.05) 0%,
+           rgba(253, 29, 29, 0.05) 50%, rgba(252, 176, 69, 0.05) 100%);
+    transition: 300ms ease-in-out;
+  }
+
+  &__title {
+    margin: 0 0 rem(-10px) 0;
+    font-weight: 700;
+    font-size: rem(14px);
+    line-height: rem(20px);
+  }
+
+  &__info {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0 rem(12px);
+  }
+
+  &__svg {
+    width: rem(56px);
+    height: rem(56px);
+    fill: transparent;
+  }
+
+  &__values {
+    display: flex;
+    gap: 0 rem(4px);
+    font-weight: 600;
+    font-size: rem(14px);
+    line-height: rem(24px);
+  }
+
+  &__value {
+
+    &:not(:nth-child(1)) {
+      color: var(--red);
+    }
+
+    &:nth-child(1) {
+      color: var(--green);
+    }
+  }
+
+  &__emoji {
+    margin: 0 0 rem(12px) 0;
+    font-weight: 700;
+    font-size: rem(20px);
+    line-height: rem(24px);
+  }
+}
+
+@property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.pie {
+  --p: 1;
+  --b: #{rem(8px)};
+  --c:darkred;
+  --w: #{rem(80px)};
+  --gr: rgba(226, 73, 73, 0.1);
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  place-content:center;
+  text-align: center;
+  font-size:25px;
+  color: transparent;
+
+  &::before,
+  &::after {
+    content:"";
+    position:absolute;
+    border-radius:50%;
+  }
+
+  &::before {
+    inset:0;
+    background:
+      radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+      conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+    mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+  }
+
+  &:after {
+    inset:calc(50% - var(--b)/2);
+    background:var(--c);
+    transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+  }
+
+  &__value {
+    font-size: rem(16px);
+    line-height: rem(20px);
+    color: var(--black);
+    padding-top: rem(12.5px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% - rem(16px));
+      height: calc(100% - rem(16px));
+      border: 8px solid var(--gr);
+      border-radius: rem(80px);
+    }
+  }
+
+  &__text {
+    font-size: rem(10px);
+    line-height: rem(12px);
+    color: var(--black);
+    margin: 0 0 rem(-12.5px) 0;
+  }
+}
+
+
 .container {
   display: grid;
   grid-template-areas: "breadcrumbs breadcrumbs"
