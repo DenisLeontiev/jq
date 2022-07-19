@@ -10,61 +10,98 @@
 
     <UiContainer :class="[$style.cell, $style.headPanel]">
       <div :class="$style.headPanel__topLeft">
-        <UiAvatar
-          src="https://picsum.photos/300/300"
-          :size="200"
-          :class="$style.avatar"
-        />
-
-        <div :class="$style.headPanel__stars">
-          <UiIcon
-            icon="Star"
-            :class="$style.headPanel__star"
+        <div :class="$style.headPanel__wrapper">
+          <UiAvatar
+            src="https://picsum.photos/100/100"
+            :size="100"
+            :class="$style.avatar"
           />
-          <UiIcon
-            icon="Star"
-            :class="$style.headPanel__star"
-          />
-          <UiIcon
-            icon="Star"
-            :class="$style.headPanel__star"
-          />
-          <UiIcon
-            icon="Star"
-            :class="$style.headPanel__star"
-          />
-          <UiIcon
-            icon="StarEmpty"
-            :class="$style.headPanel__star"
-          />
-        </div>
-
-        <div :class="$style.headPanel__statsInfo">
-          <div :class="$style.headPanel__statsReview">
-            4,1 / 5
+          <div :class="$style.headPanel__info">
+            <div :class="$style.headPanel__title">
+              Healthy burger
+            </div>
+            <div :class="$style.headPanel__location">
+              Dubai, Park View Tower
+            </div>
+            <div :class="$style.headPanel__members">
+              36 сотрудников
+            </div>
           </div>
-          <UiIcon
-            icon="LvlUp"
-            :class="$style.level"
-          />
-          <div :class="$style.headPanel__statsPercent">
-            +0,4%
+  
+          <div :class="$style.headPanel__stats">
+            <div :class="$style.headPanel__statsReview">
+              4,1
+            </div>
+            <div :class="$style.headPanel__stars">
+              <UiIcon
+                icon="Star"
+                :class="$style.headPanel__star"
+              />
+              <UiIcon
+                icon="Star"
+                :class="$style.headPanel__star"
+              />
+              <UiIcon
+                icon="Star"
+                :class="$style.headPanel__star"
+              />
+              <UiIcon
+                icon="Star"
+                :class="$style.headPanel__star"
+              />
+              <UiIcon
+                icon="StarEmpty"
+                :class="$style.headPanel__star"
+              />
+            </div>
+  
+            (430 reviews)
           </div>
-          than last week
-        </div>
-
-        <div :class="$style.headPanel__title">
-          Healthy burger
-        </div>
-        <div :class="$style.headPanel__location">
-          <UiIcon
-            icon="Pin"
-            :class="$style.headPanel__locationSvg"
-          />
-          Dubai, Park View Tower
-        </div>
-        <div :class="$style.headPanel__members">
-          36 сотрудников
+  
+          <ul :class="$style.headPanel__statInfo">
+            <li>
+              <div :class="$style.headPanel__emoji">
+                😍
+              </div>
+              5 stars
+              <span>332</span>
+            </li>
+            <li>
+              <div :class="$style.headPanel__emoji">
+                😊
+              </div>
+              4 stars
+              <span>39</span>
+            </li>
+            <li>
+              <div :class="$style.headPanel__emoji">
+                😐
+              </div>
+              3 stars
+              <span>21</span>
+            </li>
+            <li>
+              <div :class="$style.headPanel__emoji">
+                😢
+              </div>
+              2 stars
+              <span>14</span>
+            </li>
+            <li>
+              <div :class="$style.headPanel__emoji">
+                😱
+              </div>
+              1 star
+              <span>7</span>
+            </li>
+            <li>
+              <div :class="$style.headPanel__emoji">
+                🤔
+              </div>
+              not rated
+              <span>55</span>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -93,7 +130,6 @@
               <div :class="$style.headPanel__statsPercent">
                 +0,55%
               </div>
-              than last week
             </div>
           </div>
           <div :class="$style.totalStat">
@@ -111,7 +147,6 @@
               <div :class="[$style.headPanel__statsPercent, $style.minus]">
                 +1,42%
               </div>
-              than last week
             </div>
           </div>
           <div :class="$style.totalStat">
@@ -129,7 +164,6 @@
               <div :class="$style.headPanel__statsPercent">
                 +25,44%
               </div>
-              than last week
             </div>
           </div>
         </div>
@@ -278,7 +312,7 @@
       </div>
     </UiContainer>
 
-    <Restaurants :class="[$style.cell, $style.topLeft]" />
+    <EmplRating :class="[$style.cell, $style.topLeft]" />
     <Transactions :class="[$style.cell, $style.topRight]" />
     <UiContainer :class="[$style.cell, $style.bottom]">
       3
@@ -293,7 +327,7 @@ import { Chart, registerables, ChartOptions } from "chart.js";
 import UiContainer from "../components/Ui/Container/Container.vue";
 import UiBreadcrumbs from "../components/Ui/breadcrumbs/breadcrumbs.vue";
 import { BreadcrumbsItemProps } from "../components/Ui/Breadcrumbs";
-import Restaurants from "../components/Restaurants/Restaurants.vue";
+import EmplRating from "../components/Employees/Rating.vue";
 import Transactions from "../components/Transactions/Transactions.vue";
 import UiAvatar from "../components/Ui/Avatar/Avatar.vue";
 import { UiIcon } from "../components/Ui/Icon";
@@ -312,17 +346,16 @@ const periodValue = ref<string>(period[0]);
 
 Chart.register(...registerables);
 const testData = {
-  labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+  labels: ["M", "T", "W", "T", "F", "S", "S"],
   datasets: [
     {
       label: "сумма чаевых",
       data: [12, 34, 54, 11, 2, 13, 10],
-      backgroundColor: "#E6DDF6",
-    }, {
-      label: "% чаевых от чека",
-      data: [24, 42, 71, 12, 4, 22, 17],
-      backgroundColor: "#694BDB",
-    },
+      backgroundColor: "#11BB8D",
+      borderRadius: 4,
+      barThickness: 24,
+      // borderColor: '#fff',
+    }
   ],
 };
 const options = computed<ChartOptions<"bar">>(() => ({
@@ -450,6 +483,7 @@ const { barChartProps } = useBarChart({
     content:"";
     position:absolute;
     border-radius:50%;
+    z-index: 2;
   }
 
   &::before {
@@ -482,6 +516,7 @@ const { barChartProps } = useBarChart({
       height: calc(100% - rem(16px));
       border: 8px solid var(--gr);
       border-radius: rem(80px);
+      z-index: 1;
     }
   }
 
@@ -501,13 +536,15 @@ const { barChartProps } = useBarChart({
                        "topLeft topRight"
                        "bottom bottom";
   gap: rem(40px);
+  grid-template-columns: 1fr 1fr;
 }
 .breadcrumbs {
   grid-area: breadcrumbs;
 }
 
 .avatar {
-  margin: 0 auto rem(40px) auto;
+  flex-shrink: 0;
+  margin: 0 rem(20px) rem(24px) 0;
 }
 
 .graphLegends {
@@ -542,8 +579,7 @@ const { barChartProps } = useBarChart({
 .totalStats {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 0 20px;
-  margin: 0 0 rem(28px) 0;
+  margin: 0 rem(-60px) rem(28px) rem(-60px);
 }
 
 .graphTitle {
@@ -556,7 +592,7 @@ const { barChartProps } = useBarChart({
 .totalStat {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 0 rem(60px);
 
   &__title {
     font-weight: 700;
@@ -580,13 +616,38 @@ const { barChartProps } = useBarChart({
 
 .headPanel {
   display: grid;
-  grid-template-areas: "topLeft topRight topRight"
-                       "bottom bottom bottom";
+  grid-template-areas: "topLeft topLeft topRight topRight topRight topRight"
+                       "bottom bottom bottom bottom bottom bottom";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-columns: true;
+
+  &__emoji {
+    font-size: rem(16px);
+    line-height: rem(16px);
+  }
+
+  &__stats {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-weight: 600;
+    font-size: rem(14px);
+    line-height: rem(24px);
+    color: var(--gray);
+  }
+
+  &__info {
+    width: calc(100% - #{rem(120px)});
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+  }
 
   &__topLeft {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     grid-area: topLeft;
     padding: 0 rem(60px) 0 rem(20px);
   }
@@ -605,7 +666,7 @@ const { barChartProps } = useBarChart({
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 0 rem(8px) 0;
+    margin: 0 rem(8px) 0 0;
   }
 
   &__star {
@@ -616,8 +677,8 @@ const { barChartProps } = useBarChart({
   &__statsReview {
     font-size: rem(16px);
     font-weight: 700;
-    color: var(--lilac);
-    margin: 0 rem(13px) 0 0;
+    color: var(--black);
+    margin: 0 rem(8px) 0 0;
   }
 
   &__statsPercent {
@@ -637,31 +698,57 @@ const { barChartProps } = useBarChart({
 
   &__statsInfo {
     display: flex;
-    align-items: flex-end;
-    margin: 0 0 rem(16px) 0;
+    align-items: center;
+  }
+
+  &__statInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: rem(250px);
+    gap: rem(4px) 0;
+    margin: rem(20px) 0 0 0;
+    padding: 0;
+    list-style: none;
     font-weight: 600;
-    font-size: rem(12px);
-    line-height: rem(16px);
+    font-size: rem(14px);
+    line-height: rem(24px);
+    color: var(--gray);
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: rem(8px);
+    }
+
+    span {
+      margin: 0 0 0 auto;
+      color: var(--black);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &__title {
     margin: 0 0 rem(8px) 0;
     font-weight: 700;
-    font-size: rem(32px);
-    line-height: rem(38px);
+    font-size: rem(16px);
+    line-height: rem(25px);
     color: var(--lilac-hover);
   }
 
-  &__locationSvg {
-    width: rem(16px);
-    height: rem(16px);
-    margin: 0 rem(12px) 0 0;
+  &__location {
+    margin: 0 0 rem(8px) 0;
+    font-weight: 400;
+    font-size: rem(10px);
+    line-height: rem(12px);
+    color: var(--gray);
   }
 
-  &__location {
-    display: flex;
-    align-items: center;
-    margin: 0 0 rem(16px) 0;
+  &__members {
     font-weight: 600;
     font-size: rem(12px);
     line-height: rem(16px);

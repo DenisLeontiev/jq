@@ -8,23 +8,9 @@
       <LogosMap />
       <svg>
         <defs>
-          <linearGradient
-            id="paint0_linear_691_41649"
-            x1="6.89372"
-            y1="6.0246"
-            x2="17.3682"
-            y2="17.3254"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#5F00FF" />
-            <stop
-              offset="0.772615"
-              stop-color="#BF00C0"
-            />
-            <stop
-              offset="1"
-              stop-color="#FF008A"
-            />
+          <linearGradient id="paint0_linear_691_41649" x1="3.70096" y1="11.3211" x2="20.299" y2="11.3211" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F09819"/>
+            <stop offset="1" stop-color="#EDDE5D"/>
           </linearGradient>
         </defs>
       </svg>
@@ -53,6 +39,12 @@ useOutsideClickContainer();
 const { setContainer: setTeleportContainer } = useTeleportContainer();
 </script>
 
+<style>
+#bar-chart {
+  height: 226px !important;
+}
+</style>
+
 <style lang="scss" module>
 :root {
   font: 400 16px 'RF Dewi Extended', sans-serif;
@@ -61,7 +53,7 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
   --lilac-hover: #7500FF;
   --violet: #E6DDF6;
   --green: #11BB8D;
-  --gray: #8E8F91;
+  --gray: #7C868F;
 
   --red: #E24949;
   --white: #fff;
@@ -73,6 +65,7 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
 @import './assets/utils';
 @import './assets/normalize';
 @import './assets/typography';
+
 .sprite {
   position: absolute;
   z-index: -1;
