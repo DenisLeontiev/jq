@@ -27,7 +27,7 @@
               36 сотрудников
             </div>
           </div>
-  
+
           <div :class="$style.headPanel__stats">
             <div :class="$style.headPanel__statsReview">
               4,1
@@ -54,10 +54,10 @@
                 :class="$style.headPanel__star"
               />
             </div>
-  
+
             (430 reviews)
           </div>
-  
+
           <ul :class="$style.headPanel__statInfo">
             <li>
               <div :class="$style.headPanel__emoji">
@@ -201,11 +201,15 @@
             />
             <div :class="$style.statsByRule__values">
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😍</div>
+                <div :class="$style.statsByRule__emoji">
+                  😍
+                </div>
                 160
               </div>
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😐</div>
+                <div :class="$style.statsByRule__emoji">
+                  😐
+                </div>
                 40
               </div>
             </div>
@@ -213,8 +217,12 @@
               :class="$style.pie"
               style="--p:90;--c:var(--green)"
             >
-              <div :class="$style.pie__value">90%</div>
-              <div :class="$style.pie__text">positive</div>
+              <div :class="$style.pie__value">
+                90%
+              </div>
+              <div :class="$style.pie__text">
+                positive
+              </div>
               positive
             </div>
           </div>
@@ -231,11 +239,15 @@
             />
             <div :class="$style.statsByRule__values">
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😍</div>
+                <div :class="$style.statsByRule__emoji">
+                  😍
+                </div>
                 160
               </div>
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😐</div>
+                <div :class="$style.statsByRule__emoji">
+                  😐
+                </div>
                 40
               </div>
             </div>
@@ -243,8 +255,12 @@
               :class="$style.pie"
               style="--p:90;--c:var(--green)"
             >
-              <div :class="$style.pie__value">90%</div>
-              <div :class="$style.pie__text">positive</div>
+              <div :class="$style.pie__value">
+                90%
+              </div>
+              <div :class="$style.pie__text">
+                positive
+              </div>
               positive
             </div>
           </div>
@@ -261,11 +277,15 @@
             />
             <div :class="$style.statsByRule__values">
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😍</div>
+                <div :class="$style.statsByRule__emoji">
+                  😍
+                </div>
                 160
               </div>
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😐</div>
+                <div :class="$style.statsByRule__emoji">
+                  😐
+                </div>
                 40
               </div>
             </div>
@@ -273,8 +293,12 @@
               :class="$style.pie"
               style="--p:90;--c:var(--green)"
             >
-              <div :class="$style.pie__value">90%</div>
-              <div :class="$style.pie__text">positive</div>
+              <div :class="$style.pie__value">
+                90%
+              </div>
+              <div :class="$style.pie__text">
+                positive
+              </div>
               positive
             </div>
           </div>
@@ -291,11 +315,15 @@
             />
             <div :class="$style.statsByRule__values">
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😍</div>
+                <div :class="$style.statsByRule__emoji">
+                  😍
+                </div>
                 160
               </div>
               <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">😐</div>
+                <div :class="$style.statsByRule__emoji">
+                  😐
+                </div>
                 40
               </div>
             </div>
@@ -303,8 +331,12 @@
               :class="$style.pie"
               style="--p:60;--c:#E24949;--gr:rgba(17, 187, 141, 0.1)"
             >
-              <div :class="$style.pie__value">60%</div>
-              <div :class="$style.pie__text">negative</div>
+              <div :class="$style.pie__value">
+                60%
+              </div>
+              <div :class="$style.pie__text">
+                negative
+              </div>
               negative
             </div>
           </div>
@@ -355,7 +387,7 @@ const testData = {
       borderRadius: 4,
       barThickness: 24,
       // borderColor: '#fff',
-    }
+    },
   ],
 };
 const options = computed<ChartOptions<"bar">>(() => ({
@@ -527,7 +559,6 @@ const { barChartProps } = useBarChart({
     margin: 0 0 rem(-12.5px) 0;
   }
 }
-
 
 .container {
   display: grid;

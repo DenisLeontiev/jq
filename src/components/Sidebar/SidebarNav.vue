@@ -29,11 +29,10 @@ const items: Array<Item> = [{
   label: "Главная",
   to: "/",
 }, {
-  key: "staff",
+  key: "employees",
   icon: "Accountmultiple",
   label: "Сотрудники",
-  to: "/",
-  // to: { name: "staff" },
+  to: { name: "Employees" },
 }, {
   key: "transactions",
   icon: "Moneybox",

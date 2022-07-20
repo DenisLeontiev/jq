@@ -8,9 +8,19 @@
       <LogosMap />
       <svg>
         <defs>
-          <linearGradient id="paint0_linear_691_41649" x1="3.70096" y1="11.3211" x2="20.299" y2="11.3211" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#F09819"/>
-            <stop offset="1" stop-color="#EDDE5D"/>
+          <linearGradient
+            id="paint0_linear_691_41649"
+            x1="3.70096"
+            y1="11.3211"
+            x2="20.299"
+            y2="11.3211"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#F09819" />
+            <stop
+              offset="1"
+              stop-color="#EDDE5D"
+            />
           </linearGradient>
         </defs>
       </svg>
