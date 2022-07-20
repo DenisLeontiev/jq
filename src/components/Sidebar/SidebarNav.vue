@@ -29,29 +29,23 @@ const items: Array<Item> = [{
   label: "Главная",
   to: "/",
 }, {
-  key: "analytics",
-  icon: "Analytics",
-  label: "Аналитика",
+  key: "staff",
+  icon: "Accountmultiple",
+  label: "Сотрудники",
   to: "/",
-  // to: { name: "analytics" },
+  // to: { name: "staff" },
 }, {
-  key: "restaurants",
-  icon: "Domain",
-  label: "Рестораны",
+  key: "transactions",
+  icon: "Moneybox",
+  label: "Транзакции",
   to: "/",
   // to: { name: "restaurants" },
 }, {
-  key: "staff",
-  icon: "Accountmultiple",
-  label: "Сотрудники",
+  key: "payouts",
+  icon: "Card",
+  label: "Выплаты",
   to: "/",
-  // to: { name: "staff" },
-}, {
-  key: "staff",
-  icon: "Accountmultiple",
-  label: "Сотрудники",
-  to: "/",
-  // to: { name: "staff" },
+  // to: { name: "restaurants" },
 }, {
   key: "settings",
   icon: "Cog",
@@ -87,6 +81,11 @@ const onMenuItemClick = (item: Item, event: MouseEvent) => {
   padding-top: rem(32px);
 }
 .item {
-  margin-bottom: rem(40px);
+  &:not(:first-child) {
+    margin-top: rem(40px);
+  }
+  &:last-child {
+    margin-top: rem(60px);
+  }
 }
 </style>

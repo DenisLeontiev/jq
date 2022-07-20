@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.sidebar">
+  <div :class="[$style.sidebar, isMinimize && $style.minimize]">
     <div :class="$style.card">
       <div :class="$style.logoWrapper">
         <UiLogo :class="$style.logo" />
@@ -22,18 +22,6 @@
       <SidebarSelect :class="$style.select" />
       <div :class="$style.list">
         <UiContact
-          variant="Email"
-          href="mailto:curtis.we@example.com"
-          label="curtis.we@example.com"
-          :class="$style.contact"
-        />
-        <UiContact
-          variant="Phone"
-          href="tel:86035550123"
-          label="(603) 555-0123"
-          :class="$style.contact"
-        />
-        <UiContact
           variant="Mapmarker"
           href="https://yandex.ru/maps/-/CCUJfCXo3A"
           label="143500 РФ г. Москва, ул. <br />Ленина 75"
@@ -43,30 +31,57 @@
       </div>
     </div>
     <SidebarNav :class="$style.nav" />
+    <div
+      :class="$style.resize"
+      @click="setMinimize"
+    >
+      <UiIcon
+        icon="Chevronleft"
+        :class="$style.icon"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
 import UiLogo from "../Ui/Logo/Logo.vue";
+import UiIcon from "../Ui/Icon/Icon.vue";
 import UiAvatar from "../Ui/Avatar/Avatar.vue";
 import UiContact from "../Ui/Contact/Contact.vue";
 import SidebarSelect from "./SidebarSelect.vue";
 import SidebarNav from "./SidebarNav.vue";
+
+const isMinimize = ref(false);
+
+const setMinimize = () => {
+  isMinimize.value = !isMinimize.value;
+};
 
 </script>
 
 <style lang="scss" module>
 @import "../../assets/utils";
 .sidebar {
+  position: relative;
+
   border-right: 1px solid #EAEEF1 ;
   padding: rem(24px) 0 rem(24px) rem(36px);
 
-  width: rem(284px);
+  --sidebar-min-width: #{rem(284px)};
+  min-width: var(--sidebar-min-width);
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  &.minimize {
+    --sidebar-min-width: #{rem(108px)};
+
+    .icon {
+      transform: scale3d(-1, 1, 1);
+    }
+  }
 }
 .card {
   display: flex;
@@ -78,7 +93,7 @@ import SidebarNav from "./SidebarNav.vue";
   padding-right: rem(8px);
 }
 .logoWrapper {
-  width: rem(43px);
+  width: rem(132px);
   height: rem(40px);
 
   margin-bottom: rem(44px);
@@ -111,7 +126,7 @@ import SidebarNav from "./SidebarNav.vue";
   -webkit-text-fill-color: transparent;
 }
 .select {
-  margin-bottom: rem(48px);
+  margin-bottom: rem(20px);
 }
 .contact {
   &:not(:last-child) {
@@ -119,6 +134,38 @@ import SidebarNav from "./SidebarNav.vue";
   }
 }
 .nav {
-  margin-top: rem(20px);
+  margin-top: rem(40px);
+}
+.resize {
+  width: rem(24px);
+  height: rem(24px);
+
+  @extend %flex-center;
+
+  border-radius: 50%;
+  border: 1px solid #BDC6CF;
+  background-color: white;
+
+  position: absolute;
+  top: rem(74px);
+  right: 0;
+
+  transition: background-color 0.2s;
+  transform: translateX(50%);
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f2f5;
+  }
+}
+.icon {
+  color: #9FA8B1;
+
+  width: rem(8px);
+  height: rem(12px);
+
+  transition: transform 0.2s;
+  transform: scale3d(1, 1, 1);
 }
 </style>
