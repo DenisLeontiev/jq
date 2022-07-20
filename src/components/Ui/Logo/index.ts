@@ -3,6 +3,7 @@ export { default as UiLogosMap } from "./LogosMap.vue";
 
 export enum LogoVariant {
     main = "main",
+    minimize = "minimize",
 }
 
 export interface LogoProps {

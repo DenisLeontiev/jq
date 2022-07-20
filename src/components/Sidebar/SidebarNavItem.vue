@@ -13,6 +13,7 @@
       :class="$style.icon"
     />
     <div
+      v-if="!isMinimize"
       :class="$style.label"
       v-html="label"
     />
@@ -20,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import { RouteLocationRaw } from "vue-router";
 import UiIcon from "../Ui/Icon/Icon.vue";
 
@@ -39,6 +40,8 @@ const isLink = computed(() => (
 const component = computed(() => (
   isLink.value ? "router-link" : "div"
 ));
+
+const isMinimize = inject("isMinimize");
 
 const emit = defineEmits<{
   (e: "click", event: MouseEvent): void;
@@ -69,11 +72,11 @@ const onClick = (event: MouseEvent) => {
 .icon {
   width: rem(24px);
   height: rem(24px);
-  margin-right: rem(28px);
 }
 .label {
   font-weight: 700;
   font-size: rem(14px);
   line-height: rem(20px);
+  margin-left: rem(28px);
 }
 </style>

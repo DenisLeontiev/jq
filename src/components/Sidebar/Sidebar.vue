@@ -1,17 +1,19 @@
 <template>
-  <div :class="[$style.sidebar, isMinimize && $style.minimize]">
+  <div :class="[$style.sidebar, isMinimize && $style.isMinimize]">
     <div :class="$style.card">
-      <div :class="$style.logoWrapper">
-        <UiLogo :class="$style.logo" />
-      </div>
+      <UiLogo
+        :variant="isMinimize ? 'minimize' : 'main'"
+        :class="$style.logo"
+      />
       <div :class="$style.avatarWrapper">
         <UiAvatar
+          :size="isMinimize ? 60 : 98"
           src="https://picsum.photos/300/300"
           :border="true"
           :class="$style.avatar"
         />
         <UiAvatar
-          :size="46"
+          :size="isMinimize ? 22 : 46"
           text="All"
           :class="$style.subavatar"
         />
@@ -44,7 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, provide } from "vue";
 import UiLogo from "../Ui/Logo/Logo.vue";
 import UiIcon from "../Ui/Icon/Icon.vue";
 import UiAvatar from "../Ui/Avatar/Avatar.vue";
@@ -53,6 +55,8 @@ import SidebarSelect from "./SidebarSelect.vue";
 import SidebarNav from "./SidebarNav.vue";
 
 const isMinimize = ref(false);
+
+provide("isMinimize", isMinimize);
 
 const setMinimize = () => {
   isMinimize.value = !isMinimize.value;
@@ -75,11 +79,35 @@ const setMinimize = () => {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  &.minimize {
+  &.isMinimize {
     --sidebar-min-width: #{rem(108px)};
 
     .icon {
       transform: scale3d(-1, 1, 1);
+    }
+
+    .logo {
+      --sidebar-logo-width: #{rem(44px)};
+    }
+
+    .title {
+      display: none;
+    }
+
+    .select {
+      display: none;
+    }
+
+    .list {
+      display: none;
+    }
+
+    .nav {
+      --sidebar-nav-margin-top: #{rem(212px)};
+    }
+
+    .subavatar {
+      --sidebar-logo-width: #{rem(3px)};
     }
   }
 }
@@ -92,41 +120,44 @@ const setMinimize = () => {
   width: 100%;
   padding-right: rem(8px);
 }
-.logoWrapper {
-  width: rem(132px);
-  height: rem(40px);
+.logo {
+  --sidebar-logo-width: #{rem(132px)};
+  --sidebar-logo-height: #{rem(40px)};
+  width: var(--sidebar-logo-width);
+  height: var(--sidebar-logo-height);
 
   margin-bottom: rem(44px);
 }
 .avatarWrapper {
   position: relative;
-  margin-bottom: rem(18px);
-}
-.avatar {
 }
 .subavatar {
+  --sidebar-logo-width: #{rem(-6px)};
   position: absolute;
-  right: rem(-6px);
-  bottom: rem(-6px);
+  right: var(--sidebar-logo-width);
+  bottom: var(--sidebar-logo-width);
   z-index: 1;
 }
 .title {
   font-weight: 700;
   font-size: rem(16px);
   line-height: rem(24px);
+
   color: #030307;
+
   margin-bottom: rem(12px);
+  margin-top: rem(18px);
 }
 .select {
   font-weight: 700;
   font-size: rem(14px);
   line-height: rem(24px);
+
   background: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-.select {
-  margin-bottom: rem(20px);
+
+  margin-bottom: rem(24px);
 }
 .contact {
   &:not(:last-child) {
@@ -134,7 +165,8 @@ const setMinimize = () => {
   }
 }
 .nav {
-  margin-top: rem(40px);
+  --sidebar-nav-margin-top: #{rem(40px)};
+  margin-top: var(--sidebar-nav-margin-top);
 }
 .resize {
   width: rem(24px);

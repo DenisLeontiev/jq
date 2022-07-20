@@ -79,6 +79,23 @@ watchEffect(() => {
       }
     }
   }
+  &.size-s60 {
+    width: rem(60px);
+    height: rem(60px);
+    &.border {
+      padding: rem(4px);
+      position: relative;
+      &:after {
+        content: '';
+        width: calc(100% - #{rem(4px)});
+        height: calc(100% - #{rem(4px)});
+      }
+    }
+  }
+  &.size-s22 {
+    width: rem(22px);
+    height: rem(22px);
+  }
   &.size-s36 {
     width: rem(36px);
     height: rem(36px);
