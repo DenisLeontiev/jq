@@ -1,0 +1,34 @@
+[
+  {
+    "Employee": {
+      "label": "Sara Curtis",
+      "variant": "avatarSuccess",
+      "extra": "https://picsum.photos/300/300"
+    },
+    "Average rating": {
+      "label": "5",
+      "variant": "star",
+      "extra": ""
+    },
+    "Transactions qty.": {
+      "label": "56",
+      "variant": "",
+      "extra": ""
+    },
+    "Reviews qty.": {
+      "label": "10",
+      "variant": "",
+      "extra": ""
+    },
+    "Average tips amount": {
+      "label": "50 AED",
+      "variant": "currency",
+      "extra": "AED"
+    },
+    "Average bill %": {
+      "label": "10%",
+      "variant": "",
+      "extra": ""
+    }
+  }
+]

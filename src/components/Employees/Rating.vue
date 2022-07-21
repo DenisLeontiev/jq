@@ -8,29 +8,29 @@
     </UiContainerHeader>
 
     <table :class="$style.table">
-        <thead>
-            <tr>
-                <th>Employee</th>
-                <th>Average rating</th>
-                <th>Transactions qty.</th>
-                <th></th>
-            </tr>
-        </thead>
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Average rating</th>
+          <th>Transactions qty.</th>
+          <th />
+        </tr>
+      </thead>
 
-        <tbody>
-            <tr>
-                <td :class="$style.avatar">
-                    <UiAvatar
-                        src="https://picsum.photos/100/100"
-                        :size="36"
-                        :class="$style.avatar"
-                    />
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
+      <tbody>
+        <tr>
+          <td :class="$style.avatar">
+            <UiAvatar
+              src="https://picsum.photos/100/100"
+              :size="36"
+              :class="$style.avatar"
+            />
+          </td>
+          <td />
+          <td />
+          <td />
+        </tr>
+      </tbody>
     </table>
   </UiContainer>
 </template>
