@@ -10,7 +10,7 @@
 
     <UiContainer :class="[$style.cell, $style.head]">
       <UiTable
-        :head-items="headItems"
+        :is-sort="true"
         :body-items="bodyItems"
       />
     </UiContainer>
@@ -28,9 +28,6 @@ import { useEmployeesStore } from "../stores";
 const employeesStore = useEmployeesStore();
 const bodyItems = computed(() => (
   employeesStore.getItems
-));
-const headItems = computed(() => (
-  Object.keys(bodyItems.value[0])
 ));
 
 </script>

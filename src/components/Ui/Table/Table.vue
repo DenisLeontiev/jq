@@ -6,8 +6,9 @@
           v-for="thItem in headItems"
           :key="thItem"
           :class="$style.th"
+          @click="setSort(thItem)"
         >
-          {{ thItem }}
+          {{ thItem.label }}
         </th>
       </tr>
     </thead>
@@ -55,18 +56,37 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
+import { ref } from "vue";
 import { type TableProps } from "./index";
 import UiAvatar from "../Avatar/Avatar.vue";
 import UiIcon from "../Icon/Icon.vue";
 
 const props = withDefaults(defineProps<TableProps>(), {});
 
+const headItemsKeys = Object.keys(props.bodyItems[0]);
+const headItems = ref(headItemsKeys.map((item) => ({ label: item, sort: null })));
+
 function isAvatar(variant: string) {
   return variant.includes("avatar");
 }
 function avatarIcon(variant: string) {
   return variant.replace("avatar", "");
+}
+
+interface Item {
+  label: string;
+  sort: string|null;
+}
+
+function setSort(item:Item) {
+  if (!props.isSort) return;
+  if (!item.sort) {
+    item.sort = "up";
+  } else if (item.sort === "down") {
+    item.sort = null;
+  } else if (item.sort === "up") {
+    item.sort = "down";
+  }
 }
 </script>
 
@@ -103,6 +123,8 @@ function avatarIcon(variant: string) {
     font-weight: 700;
     font-size: rem(10px);
     line-height: rem(12px);
+
+    user-select: none;
     &:first-child {
       padding-left: rem(8px);
     }

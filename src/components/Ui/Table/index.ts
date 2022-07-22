@@ -7,7 +7,6 @@ export interface TableBodyItemsProps {
 }
 
 export interface TableProps {
-    headItems: Array<string>;
     isSort?: boolean;
     bodyItems: Array<string>;
 }
