@@ -24,7 +24,7 @@
         >
           <div :class="$style.value">
             <div
-              v-if="tdItem.variant.includes('avatar')"
+              v-if="isAvatar(tdItem.variant)"
               :class="$style.avatarWrapper"
             >
               <UiAvatar
@@ -32,8 +32,21 @@
                 :size="36"
                 :class="$style.avatar"
               />
+              <UiIcon
+                :icon="avatarIcon(tdItem.variant)"
+                :class="$style.status"
+              />
             </div>
-            {{ tdItem.label }}
+            <span>{{ tdItem.label }}</span>
+            <span
+              v-if="tdItem.variant === 'text'"
+              v-html="tdItem.extra"
+            />
+            <UiIcon
+              v-if="tdItem.variant === 'star'"
+              icon="Star"
+              :class="$style.star"
+            />
           </div>
         </td>
       </tr>
@@ -42,10 +55,19 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
 import { type TableProps } from "./index";
 import UiAvatar from "../Avatar/Avatar.vue";
+import UiIcon from "../Icon/Icon.vue";
 
 const props = withDefaults(defineProps<TableProps>(), {});
+
+function isAvatar(variant: string) {
+  return variant.includes("avatar");
+}
+function avatarIcon(variant: string) {
+  return variant.replace("avatar", "");
+}
 </script>
 
 <style lang="scss" module>
@@ -58,42 +80,64 @@ const props = withDefaults(defineProps<TableProps>(), {});
   text-align: left;
 
   color: #030307;
-}
-.tr {
-  transition: background-color 0.2s;
-  cursor: pointer;
-  td {
+  .tr {
+    transition: background-color 0.2s;
+    cursor: pointer;
+    td {
+      &:first-child {
+        border-top-left-radius: rem(8px);
+        border-bottom-left-radius: rem(8px);
+      }
+      &:last-child {
+        border-top-right-radius: rem(8px);
+        border-bottom-right-radius: rem(8px);
+      }
+    }
+    &:hover {
+      background-color: #F8F8F8;
+    }
+  }
+  .th {
+    height: rem(54px);
+
+    font-weight: 700;
+    font-size: rem(10px);
+    line-height: rem(12px);
     &:first-child {
-      border-top-left-radius: rem(8px);
-      border-bottom-left-radius: rem(8px);
-    }
-    &:last-child {
-      border-top-right-radius: rem(8px);
-      border-bottom-right-radius: rem(8px);
+      padding-left: rem(8px);
     }
   }
-  &:hover {
-    background-color: #F8F8F8;
-  }
-}
-.th {
-  height: rem(54px);
+  .td {
+    height: rem(54px);
 
-  font-weight: 700;
-  font-size: rem(10px);
-  line-height: rem(12px);
-  &:first-child {
-    padding-left: rem(16px);
+    font-weight: 600;
+    font-size: rem(12px);
+    line-height: rem(16px);
+    &:first-child {
+      padding-left: rem(8px);
+    }
   }
-}
-.td {
-  height: rem(54px);
+  .value {
+    @extend %flex-start;
+  }
+  .avatarWrapper {
+    position: relative;
+    display: inline-flex;
+    margin-right: rem(10px);
+  }
+  .status {
+    width: rem(17px);
+    height: rem(17px);
 
-  font-weight: 600;
-  font-size: rem(12px);
-  line-height: rem(16px);
-  &:first-child {
-    padding-left: rem(8px);
+    position: absolute;
+    bottom: rem(-3px);
+    right: rem(-3px);
+    z-index: 1;
+  }
+  .star {
+    width: rem(16px);
+    height: rem(16px);
+    margin-left: rem(8px);
   }
 }
 </style>

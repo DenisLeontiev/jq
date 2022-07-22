@@ -23,7 +23,7 @@
     "Average tips amount": {
       "label": "50",
       "variant": "text",
-      "extra": "AED"
+      "extra": "&nbsp;AED"
     },
     "Average bill %": {
       "label": "10",
@@ -55,7 +55,7 @@
     "Average tips amount": {
       "label": "20",
       "variant": "text",
-      "extra": "AED"
+      "extra": "&nbsp;AED"
     },
     "Average bill %": {
       "label": "20",
