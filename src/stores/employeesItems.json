@@ -2,7 +2,7 @@
   {
     "Employee": {
       "label": "Sara Curtis",
-      "variant": "avatarSuccess",
+      "variant": "avatarActive",
       "extra": "https://picsum.photos/300/300"
     },
     "Average rating": {
@@ -21,14 +21,46 @@
       "extra": ""
     },
     "Average tips amount": {
-      "label": "50 AED",
-      "variant": "currency",
+      "label": "50",
+      "variant": "text",
       "extra": "AED"
     },
     "Average bill %": {
-      "label": "10%",
+      "label": "10",
+      "variant": "text",
+      "extra": "%"
+    }
+  },
+  {
+    "Employee": {
+      "label": "Miracle Siphron",
+      "variant": "avatarActive",
+      "extra": "https://picsum.photos/300/400"
+    },
+    "Average rating": {
+      "label": "3.5",
+      "variant": "star",
+      "extra": ""
+    },
+    "Transactions qty.": {
+      "label": "120",
       "variant": "",
       "extra": ""
+    },
+    "Reviews qty.": {
+      "label": "15",
+      "variant": "",
+      "extra": ""
+    },
+    "Average tips amount": {
+      "label": "20",
+      "variant": "text",
+      "extra": "AED"
+    },
+    "Average bill %": {
+      "label": "20",
+      "variant": "text",
+      "extra": "%"
     }
   }
 ]

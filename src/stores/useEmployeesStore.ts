@@ -1,12 +1,13 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
+import employeesItems from "./employeesItems.json";
 
 export const useEmployeesStore = defineStore({
   id: "employees",
   state: () => ({
-    items: [],
+    items: employeesItems,
   }),
   getters: {
-    items: (state) => state.items,
+    getItems: (state) => state.items,
   },
   actions: {
     async loadItems() {
