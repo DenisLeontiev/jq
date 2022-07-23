@@ -6,9 +6,16 @@
           v-for="thItem in headItems"
           :key="thItem"
           :class="$style.th"
-          @click="setSort(thItem)"
+          @click="setSort(name, thItem)"
         >
-          {{ thItem.label }}
+          <div :class="$style.value">
+            <span>{{ thItem }}</span>
+            <TableSort
+              v-if="isSort"
+              :sort="getSortCurrentColumn({name, column: thItem})"
+              :class="$style.sort"
+            />
+          </div>
         </th>
       </tr>
     </thead>
@@ -60,33 +67,22 @@ import { ref } from "vue";
 import { type TableProps } from "./index";
 import UiAvatar from "../Avatar/Avatar.vue";
 import UiIcon from "../Icon/Icon.vue";
+import { useTableStore } from "../../../stores";
+import TableSort from "./TableSort.vue";
+
+const tableStore = useTableStore();
+const setSort = tableStore.setColumnFilters;
+const { getSortCurrentColumn } = tableStore;
 
 const props = withDefaults(defineProps<TableProps>(), {});
 
-const headItemsKeys = Object.keys(props.bodyItems[0]);
-const headItems = ref(headItemsKeys.map((item) => ({ label: item, sort: null })));
+const headItems = ref(Object.keys(props.bodyItems[0]));
 
 function isAvatar(variant: string) {
   return variant.includes("avatar");
 }
 function avatarIcon(variant: string) {
   return variant.replace("avatar", "");
-}
-
-interface Item {
-  label: string;
-  sort: string|null;
-}
-
-function setSort(item:Item) {
-  if (!props.isSort) return;
-  if (!item.sort) {
-    item.sort = "up";
-  } else if (item.sort === "down") {
-    item.sort = null;
-  } else if (item.sort === "up") {
-    item.sort = "down";
-  }
 }
 </script>
 
@@ -125,6 +121,7 @@ function setSort(item:Item) {
     line-height: rem(12px);
 
     user-select: none;
+    cursor: pointer;
     &:first-child {
       padding-left: rem(8px);
     }
@@ -159,6 +156,9 @@ function setSort(item:Item) {
   .star {
     width: rem(16px);
     height: rem(16px);
+    margin-left: rem(8px);
+  }
+  .sort {
     margin-left: rem(8px);
   }
 }

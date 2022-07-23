@@ -12,6 +12,7 @@
       <UiTable
         :is-sort="true"
         :body-items="bodyItems"
+        name="employeesMain"
       />
     </UiContainer>
     <UiContainer :class="[$style.cell, $style.main]" />
