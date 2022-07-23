@@ -15,17 +15,11 @@ export const useEmployeesStore = defineStore({
       const filterCurrentTable = tableStore.getFilterCurrentTable(name);
       if (filterCurrentTable && filterCurrentTable.length) {
         const { column, sort } = filterCurrentTable[0];
-        const items = Array.from(state.items);
-        items.sort((a, b) => {
-          if (a[column].label > b[column].label) {
-            return 1;
-          }
-          if (a[column].label < b[column].label) {
-            return -1;
-          }
-          return 0;
-        });
-        return sort === "up" ? items : items.reverse();
+        const items = state.items.sort((a, b) => a[column].label.localeCompare(b[column].label, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        }));
+        return sort === "up" ? items.reverse() : items;
       }
       return state.items;
     },
