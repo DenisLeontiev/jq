@@ -1,8 +1,7 @@
 <template>
   <div :class="$style.header">
     <LangSwitcher :class="$style.langSwitcher" />
-    <UiButton prependIcon="Plus" to="add">Добавить сотрудника</UiButton>
-    <UiButton variant="outline" to="add">Добавить сотрудника</UiButton>
+    <UiButton to="add">Добавить сотрудника</UiButton>
   </div>
 </template>
 

@@ -8,18 +8,21 @@
         :class="$style.item"
         variant="maxReviews"
         src="https://picsum.photos/300/400"
+        value="10"
         title="Ali Shamsi"
       />
       <EmployeesCard
         :class="$style.item"
         variant="bestRating"
         src="https://picsum.photos/400/400"
+        value="5,0"
         title="Sara Curtis"
       />
       <EmployeesCard
         :class="$style.item"
         variant="maxTip"
         src="https://picsum.photos/300/300"
+        value="10 AED"
         title="Ahmed Saris"
       />
     </div>
@@ -38,7 +41,9 @@ import EmployeesCard from "./EmployeesCard.vue";
   flex-direction: column;
 }
 .list {
-  @extend %flex-center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 .item {
   margin: 0 rem(30px);

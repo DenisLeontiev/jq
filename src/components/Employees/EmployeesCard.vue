@@ -8,7 +8,28 @@
     <div :class="$style.title">
       {{ title }}
     </div>
-    <div :class="$style.achievement" />
+    <div :class="$style.achievement">
+      <div
+        v-if="variant === 'bestRating'"
+        :class="$style.starWrapper"
+      >
+        <span :class="$style.count">{{ value }}</span>
+        <div :class="$style.list">
+          <UiIcon
+            v-for="item in Math.round(parseFloat(value))"
+            :key="item"
+            icon="Star"
+            :class="$style.star"
+          />
+        </div>
+      </div>
+      <div
+        v-else
+        :class="$style.value"
+      >
+        {{ value }}
+      </div>
+    </div>
     <div :class="$style.description">
       {{ descriptionMapping[variant] }}
     </div>
@@ -17,6 +38,7 @@
 
 <script lang="ts" setup>
 import UiAvatar from "../Ui/Avatar/Avatar.vue";
+import UiIcon from "../Ui/Icon/Icon.vue";
 
 const props = defineProps<{
   src?: string;
@@ -58,6 +80,34 @@ const descriptionMapping = {
   font-size: rem(10px);
   line-height: rem(12px);
 
+  color: #030307;
+
+  margin-top: rem(8px);
+}
+.value {
+  font-weight: 700;
+  font-size: rem(16px);
+  line-height: rem(24px);
+}
+.achievement {
+  color: #030307;
+}
+.starWrapper {
+  padding: rem(4px) 0;
+  @extend %flex-start
+}
+.list {
+  @extend %flex-start;
+  margin-left: rem(8px);
+}
+.star {
+  width: rem(16px);
+  height: rem(16px);
+}
+.count {
+  font-weight: 700;
+  font-size: rem(12px);
+  line-height: rem(16px);
   color: #030307;
 }
 </style>
