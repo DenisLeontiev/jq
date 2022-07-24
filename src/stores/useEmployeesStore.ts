@@ -8,21 +8,12 @@ export const useEmployeesStore = defineStore({
     items: employeesItems,
   }),
   getters: {
-    getItems: (state) => state.getItemsByTableSort,
-    getItemsByTableSort: (state) => {
-      const name = "employeesMain";
+    getItems: (state) => (name) => {
       const tableStore = useTableStore();
-      const filterCurrentTable = tableStore.getFilterCurrentTable(name);
-      if (filterCurrentTable && filterCurrentTable.length) {
-        const { column, sort } = filterCurrentTable[0];
-        const items = state.items.sort((a, b) => a[column].label.localeCompare(b[column].label, undefined, {
-          numeric: true,
-          sensitivity: "base",
-        }));
-        return sort === "up" ? items.reverse() : items;
-      }
-      return state.items;
+      const itemsByFilters = state.getItemsByFilters;
+      return tableStore.getItemsByTableSort({ name, items: itemsByFilters });
     },
+    getItemsByFilters: (state) => state.items,
   },
   actions: {
     async loadItems() {

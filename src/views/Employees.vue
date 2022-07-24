@@ -7,15 +7,15 @@
       :items="breadcrumbs"
       :class="$style.breadcrumbs"
     />
+    <EmployeesBest :class="$style.best" />
 
-    <UiContainer :class="[$style.cell, $style.head]">
+    <UiContainer :class="[$style.content]">
       <UiTable
         :is-sort="true"
         :body-items="bodyItems"
-        name="employeesMain"
+        :name="name"
       />
     </UiContainer>
-    <UiContainer :class="[$style.cell, $style.main]" />
   </UiContainer>
 </template>
 
@@ -25,10 +25,13 @@ import UiContainer from "../components/Ui/Container/Container.vue";
 import UiBreadcrumbs from "../components/Ui/breadcrumbs/breadcrumbs.vue";
 import UiTable from "../components/Ui/Table/Table.vue";
 import { useEmployeesStore } from "../stores";
+import EmployeesBest from "../components/Employees/EmployeesBest.vue";
+
+const name = "employeesMain";
 
 const employeesStore = useEmployeesStore();
 const bodyItems = computed(() => (
-  employeesStore.getItems
+  employeesStore.getItems(name)
 ));
 
 </script>
@@ -37,4 +40,7 @@ const bodyItems = computed(() => (
 @import "../assets/utils";
 .employees {}
 .breadcrumbs {}
+.best {
+  margin-bottom: rem(22px);
+}
 </style>
