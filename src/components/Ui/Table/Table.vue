@@ -31,32 +31,12 @@
           :key="tdItem.label"
           :class="$style.td"
         >
-          <div :class="$style.value">
-            <div
-              v-if="isAvatar(tdItem.variant)"
-              :class="$style.avatarWrapper"
-            >
-              <UiAvatar
-                :src="tdItem.extra"
-                :size="36"
-                :class="$style.avatar"
-              />
-              <UiIcon
-                :icon="avatarIcon(tdItem.variant)"
-                :class="$style.status"
-              />
-            </div>
-            <span>{{ tdItem.label }}</span>
-            <span
-              v-if="tdItem.variant === 'text'"
-              v-html="tdItem.extra"
-            />
-            <UiIcon
-              v-if="tdItem.variant === 'star'"
-              icon="Star"
-              :class="$style.star"
-            />
-          </div>
+          <TableItem
+            :label="tdItem.label"
+            :variant="tdItem.variant"
+            :extra="tdItem.extra"
+            :class="$style.item"
+          />
         </td>
       </tr>
     </tbody>
@@ -66,10 +46,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { type TableProps } from "./index";
-import UiAvatar from "../Avatar/Avatar.vue";
-import UiIcon from "../Icon/Icon.vue";
 import { useTableStore } from "../../../stores";
 import TableSort from "./TableSort.vue";
+import TableItem from "./TableItem.vue";
 
 const tableStore = useTableStore();
 const setSort = tableStore.setColumnFilters;
@@ -78,13 +57,6 @@ const { getSortCurrentColumn } = tableStore;
 const props = withDefaults(defineProps<TableProps>(), {});
 
 const headItems = ref(Object.keys(props.bodyItems[0]));
-
-function isAvatar(variant: string) {
-  return variant.includes("avatar");
-}
-function avatarIcon(variant: string) {
-  return variant.replace("avatar", "");
-}
 
 const emit = defineEmits<{
   (e: "click", event: MouseEvent): void;
@@ -153,25 +125,6 @@ const onClick = (event: MouseEvent) => {
   }
   .value {
     @extend %flex-start;
-  }
-  .avatarWrapper {
-    position: relative;
-    display: inline-flex;
-    margin-right: rem(10px);
-  }
-  .status {
-    width: rem(17px);
-    height: rem(17px);
-
-    position: absolute;
-    bottom: rem(-3px);
-    right: rem(-3px);
-    z-index: 1;
-  }
-  .star {
-    width: rem(16px);
-    height: rem(16px);
-    margin-left: rem(8px);
   }
   .sort {
     margin-left: rem(8px);

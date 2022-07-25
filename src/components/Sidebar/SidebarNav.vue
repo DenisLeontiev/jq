@@ -37,7 +37,7 @@ const items: Array<Item> = [{
   key: "transactions",
   icon: "Moneybox",
   label: "Транзакции",
-  to: "/",
+  to: { name: "Transactions" },
   // to: { name: "restaurants" },
 }, {
   key: "payouts",

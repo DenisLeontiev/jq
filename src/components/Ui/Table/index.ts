@@ -9,3 +9,9 @@ export interface TableProps {
 export interface TableSortProps {
     sort?: string;
 }
+
+export interface TableItemProps {
+    label?: any;
+    variant?: string;
+    extra?: string;
+}

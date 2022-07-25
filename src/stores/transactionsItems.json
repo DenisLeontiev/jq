@@ -1,0 +1,39 @@
+[
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
+      "extra": ""
+    },
+    "Feedback": {
+      "label": {
+        "kitchen": 3,
+        "service": 3,
+        "cleanliness": 3,
+        "atmosphere": 3
+      },
+      "variant": "feedback",
+      "extra": "Отзыв какой хороший официант, сильный"
+    },
+    "Employee": {
+      "label": "Ahmad Nizami",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm 20 Jun 22",
+      "variant": "date",
+      "extra": ""
+    }
+  }
+]
