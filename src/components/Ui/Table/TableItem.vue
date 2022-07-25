@@ -1,5 +1,13 @@
 <template>
-  <div :class="$style.tableItem">
+  <TableItemFeedback
+    v-if="variant === 'feedback'"
+    :items="label"
+    :is-feedback="!!extra"
+  />
+  <div
+    v-else
+    :class="[$style.tableItem, variant === 'date' && $style.date]"
+  >
     <div
       v-if="isAvatar(variant)"
       :class="$style.avatarWrapper"
@@ -22,7 +30,8 @@
     </div>
     <span>{{ label }}</span>
     <span
-      v-if="variant === 'text'"
+      v-if="variant === 'text' || variant === 'date'"
+      :class="[$style.extra]"
       v-html="extra"
     />
     <UiIcon
@@ -37,6 +46,7 @@
 import UiAvatar from "../Avatar/Avatar.vue";
 import UiIcon from "../Icon/Icon.vue";
 import { TableItemProps } from "./index";
+import TableItemFeedback from "./TableItemFeedback.vue";
 
 const props = withDefaults(defineProps<TableItemProps>(), {});
 
@@ -54,6 +64,13 @@ const smiles = ["🤔", "😱", "😢", "😐", "😊", "😍"];
 @import "../../../assets/utils";
 .tableItem {
   @extend %flex-start;
+  &.date {
+    color: #9FA8B1;
+    .extra {
+      color: #7C868F;
+      margin-left: rem(4px);
+    }
+  }
 }
 .avatarWrapper {
   position: relative;

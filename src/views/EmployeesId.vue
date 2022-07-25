@@ -196,7 +196,7 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                icon="Kitchen"
+                icon="Kitchencolor"
                 :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">
@@ -234,7 +234,7 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                icon="Kitchen"
+                icon="Kitchencolor"
                 :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">
@@ -272,7 +272,7 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                icon="Kitchen"
+                icon="Kitchencolor"
                 :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">
@@ -310,7 +310,7 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                icon="Kitchen"
+                icon="Kitchencolor"
                 :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">

@@ -1,5 +1,5 @@
 <template>
-  <table :class="$style.table">
+  <table :class="[$style.table, $style[size]]">
     <thead :class="$style.thead">
       <tr>
         <th
@@ -45,7 +45,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { type TableProps } from "./index";
+import { type TableProps, TableSize } from "./index";
 import { useTableStore } from "../../../stores";
 import TableSort from "./TableSort.vue";
 import TableItem from "./TableItem.vue";
@@ -54,7 +54,9 @@ const tableStore = useTableStore();
 const setSort = tableStore.setColumnFilters;
 const { getSortCurrentColumn } = tableStore;
 
-const props = withDefaults(defineProps<TableProps>(), {});
+const props = withDefaults(defineProps<TableProps>(), {
+  size: "regular" as TableSize,
+});
 
 const headItems = ref(Object.keys(props.bodyItems[0]));
 

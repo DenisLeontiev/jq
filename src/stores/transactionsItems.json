@@ -6,12 +6,7 @@
       "extra": ""
     },
     "Feedback": {
-      "label": {
-        "kitchen": 3,
-        "service": 3,
-        "cleanliness": 3,
-        "atmosphere": 3
-      },
+      "label": [3, 4, 5, 0],
       "variant": "feedback",
       "extra": "Отзыв какой хороший официант, сильный"
     },
@@ -31,9 +26,233 @@
       "extra": "%"
     },
     "Date": {
-      "label": "8:24 pm 20 Jun 22",
+      "label": "8:24 pm",
       "variant": "date",
+      "extra": "20 Jun 22"
+    }
+  },
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
       "extra": ""
+    },
+    "Feedback": {
+      "label": [3, 4, 5, 0],
+      "variant": "feedback",
+      "extra": "Отзыв какой хороший официант, сильный"
+    },
+    "Employee": {
+      "label": "Makenna Herwitz",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm",
+      "variant": "date",
+      "extra": "20 Jun 22"
+    }
+  },
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
+      "extra": ""
+    },
+    "Feedback": {
+      "label": [3, 4, 5, 0],
+      "variant": "feedback",
+      "extra": "Отзыв какой хороший официант, сильный"
+    },
+    "Employee": {
+      "label": "Ryan Lipshutz",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm",
+      "variant": "date",
+      "extra": "20 Jun 22"
+    }
+  },
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
+      "extra": ""
+    },
+    "Feedback": {
+      "label": [0, 0, 0, 0],
+      "variant": "feedback",
+      "extra": "Отзыв какой хороший официант, сильный"
+    },
+    "Employee": {
+      "label": "Ahmad Rosser",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm",
+      "variant": "date",
+      "extra": "20 Jun 22"
+    }
+  },
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
+      "extra": ""
+    },
+    "Feedback": {
+      "label": [3, 0, 1, 5],
+      "variant": "feedback",
+      "extra": ""
+    },
+    "Employee": {
+      "label": "Angel Bergson",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm",
+      "variant": "date",
+      "extra": "20 Jun 22"
+    }
+  },
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
+      "extra": ""
+    },
+    "Feedback": {
+      "label": [5, 5, 5, 5],
+      "variant": "feedback",
+      "extra": "Отзыв какой хороший официант, сильный"
+    },
+    "Employee": {
+      "label": "Justin George",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm",
+      "variant": "date",
+      "extra": "20 Jun 22"
+    }
+  },
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
+      "extra": ""
+    },
+    "Feedback": {
+      "label": [1, 1, 1, 1],
+      "variant": "feedback",
+      "extra": "Отзыв какой хороший официант, сильный"
+    },
+    "Employee": {
+      "label": "Alena Franci",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm",
+      "variant": "date",
+      "extra": "20 Jun 22"
+    }
+  },
+  {
+    "Rating": {
+      "label": "5",
+      "variant": "smail",
+      "extra": ""
+    },
+    "Feedback": {
+      "label": [4, 4, 5, 0],
+      "variant": "feedback",
+      "extra": ""
+    },
+    "Employee": {
+      "label": "Adison Septimus",
+      "variant": "",
+      "extra": ""
+    },
+    "Tips amount": {
+      "label": "5",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "% of bill": {
+      "label": "7",
+      "variant": "text",
+      "extra": "%"
+    },
+    "Date": {
+      "label": "8:24 pm",
+      "variant": "date",
+      "extra": "20 Jun 22"
     }
   }
 ]
