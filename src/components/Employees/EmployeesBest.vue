@@ -7,6 +7,7 @@
       <EmployeesCard
         :class="$style.item"
         variant="maxReviews"
+        :to="{ path: 'employees/testUser' }"
         src="https://picsum.photos/300/400"
         value="10"
         title="Ali Shamsi"
@@ -14,6 +15,7 @@
       <EmployeesCard
         :class="$style.item"
         variant="bestRating"
+        :to="{ path: 'employees/testUser' }"
         src="https://picsum.photos/400/400"
         value="5,0"
         title="Sara Curtis"
@@ -21,6 +23,7 @@
       <EmployeesCard
         :class="$style.item"
         variant="maxTip"
+        :to="{ path: 'employees/testUser' }"
         src="https://picsum.photos/300/300"
         value="10 AED"
         title="Ahmed Saris"

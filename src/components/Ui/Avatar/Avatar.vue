@@ -61,7 +61,7 @@ watchEffect(() => {
 
   border-radius: 100%;
 
-  transition: background-color .25s ease;
+  transition: background-color .25s ease, box-shadow 0.2s;
   box-shadow: 0 rem(4px) rem(14px) rgba(117, 0, 255, 0.15);
   &.border {
     background-image: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);

@@ -1,5 +1,8 @@
 <template>
-  <div :class="$style.employeesCard">
+  <router-link
+    :to="to"
+    :class="$style.employeesCard"
+  >
     <UiAvatar
       :src="src"
       :size="100"
@@ -33,7 +36,7 @@
     <div :class="$style.description">
       {{ descriptionMapping[variant] }}
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script lang="ts" setup>
@@ -45,6 +48,7 @@ const props = defineProps<{
   title?: string;
   variant?: string;
   value?: string;
+  to?: any;
 }>();
 
 const descriptionMapping = {
@@ -63,6 +67,13 @@ const descriptionMapping = {
   @extend %flex-start;
   flex-direction: column;
   text-align: center;
+
+  cursor: pointer;
+  &:hover {
+    .avatar {
+      box-shadow: 0 rem(4px) rem(14px) rgba(117, 0, 255, 0.4);
+    }
+  }
 }
 .avatar {
   margin-bottom: rem(30px);

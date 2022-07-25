@@ -8,35 +8,22 @@
       :class="$style.breadcrumbs"
     />
     <EmployeesBest :class="$style.best" />
-
-    <UiContainer :class="[$style.content]">
-      <UiTable
-        :is-sort="true"
-        :body-items="bodyItems"
-        :name="name"
-      />
-    </UiContainer>
+    <EmployeesTable :class="$style.table" />
   </UiContainer>
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import UiContainer from "../components/Ui/Container/Container.vue";
 import UiBreadcrumbs from "../components/Ui/breadcrumbs/breadcrumbs.vue";
-import UiTable from "../components/Ui/Table/Table.vue";
-import { useEmployeesStore } from "../stores";
 import EmployeesBest from "../components/Employees/EmployeesBest.vue";
 import { BreadcrumbsItemProps } from "../components/Ui/Breadcrumbs";
+import EmployeesTable from "../components/Employees/EmployeesTable.vue";
 
 const breadcrumbs = ref<Array<BreadcrumbsItemProps>>(
   [{ title: "Home", to: "/" }, { title: "Employees", to: "/employees" }],
 );
 const name = "employeesMain";
-
-const employeesStore = useEmployeesStore();
-const bodyItems = computed(() => (
-  employeesStore.getItems(name)
-));
 
 </script>
 

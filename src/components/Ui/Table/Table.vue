@@ -24,6 +24,7 @@
         v-for="(trItem, index) in bodyItems"
         :key="index"
         :class="$style.tr"
+        @click="onClick(trItem)"
       >
         <td
           v-for="tdItem in trItem"
@@ -84,6 +85,14 @@ function isAvatar(variant: string) {
 function avatarIcon(variant: string) {
   return variant.replace("avatar", "");
 }
+
+const emit = defineEmits<{
+  (e: "click", event: MouseEvent): void;
+}>();
+
+const onClick = (event: MouseEvent) => {
+  emit("click", event);
+};
 </script>
 
 <style lang="scss" module>
