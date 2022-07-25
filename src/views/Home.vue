@@ -106,14 +106,6 @@
       </div>
 
       <div :class="$style.headPanel__topRight">
-        <UiSelect
-          v-model="periodValue"
-          append-icon="Chevrondown"
-          :options="period"
-          :custom-icon="true"
-          :class="$style.period"
-        />
-
         <div :class="$style.totalStats">
           <div :class="$style.totalStat">
             <div :class="$style.totalStat__title">
@@ -344,8 +336,14 @@
       </div>
     </UiContainer>
 
-    <EmplRating :class="[$style.cell, $style.topLeft]" />
-    <Transactions :class="[$style.cell, $style.topRight]" />
+    <EmplRating
+      :class="[$style.cell, $style.topLeft]"
+      :items="employeesItems"
+    />
+
+    <TransactionsLast
+      :class="[$style.cell, $style.topRight]"
+    />
     <UiContainer :class="[$style.cell, $style.bottom]">
       3
     </UiContainer>
@@ -359,22 +357,16 @@ import { Chart, registerables, ChartOptions } from "chart.js";
 import UiContainer from "../components/Ui/Container/Container.vue";
 import UiBreadcrumbs from "../components/Ui/breadcrumbs/breadcrumbs.vue";
 import { BreadcrumbsItemProps } from "../components/Ui/Breadcrumbs";
-import EmplRating from "../components/Employees/Rating.vue";
 import Transactions from "../components/Transactions/Transactions.vue";
 import UiAvatar from "../components/Ui/Avatar/Avatar.vue";
 import { UiIcon } from "../components/Ui/Icon";
-import { UiSelect } from "../components/Ui/Select";
+import { useEmployeesStore } from "../stores";
+import EmplRating from "../components/Employees/Rating.vue";
+import TransactionsLast from "../components/Transactions/TransactionsLast.vue";
 
 const breadcrumbs = ref<Array<BreadcrumbsItemProps>>(
   [{ title: "Главная", to: "/" }],
 );
-
-const period = [
-  "За все время",
-  "За 30 дней",
-  "За 7 дней",
-];
-const periodValue = ref<string>(period[0]);
 
 Chart.register(...registerables);
 const testData = {
@@ -400,6 +392,11 @@ const { barChartProps } = useBarChart({
   chartData: testData,
   options,
 });
+
+const employeesStore = useEmployeesStore();
+const employeesItems = computed(() => (
+  employeesStore.getItems("employeesPreview", "Preview")
+));
 </script>
 
 <style lang="scss" module>
@@ -785,11 +782,6 @@ const { barChartProps } = useBarChart({
     line-height: rem(16px);
     color: var(--gray);
   }
-}
-
-.period {
-  margin: 0 0 rem(28px) auto;
-  text-transform: uppercase;
 }
 
 .cell {

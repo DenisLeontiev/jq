@@ -28,10 +28,11 @@ import { useEmployeesStore } from "../stores";
 import EmployeesBest from "../components/Employees/EmployeesBest.vue";
 
 const name = "employeesMain";
+const type = "Main";
 
 const employeesStore = useEmployeesStore();
 const bodyItems = computed(() => (
-  employeesStore.getItems(name)
+  employeesStore.getItems(name, type)
 ));
 
 </script>

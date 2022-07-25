@@ -1,19 +1,21 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import employeesItems from "./employeesItems.json";
+import previewEmployeesItems from "./previewEmployeesItems.json";
 import { useTableStore } from "./useTableStore";
 
 export const useEmployeesStore = defineStore({
   id: "employees",
   state: () => ({
-    items: employeesItems,
+    itemsMain: employeesItems,
+    itemsPreview: previewEmployeesItems,
   }),
   getters: {
-    getItems: (state) => (name) => {
+    getItems: (state) => (name, type) => {
       const tableStore = useTableStore();
-      const itemsByFilters = state.getItemsByFilters;
+      const itemsByFilters = state.getItemsByFilters(type);
       return tableStore.getItemsByTableSort({ name, items: itemsByFilters });
     },
-    getItemsByFilters: (state) => state.items,
+    getItemsByFilters: (state) => (type) => state[`items${type}`]
   },
   actions: {
     async loadItems() {

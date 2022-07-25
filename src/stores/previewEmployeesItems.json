@@ -1,0 +1,36 @@
+[
+  {
+    "Employee": {
+      "label": "Sara Curtis",
+      "variant": "avatarActive",
+      "extra": "https://picsum.photos/300/300"
+    },
+    "Average rating": {
+      "label": "5",
+      "variant": "star",
+      "extra": ""
+    },
+    "Transactions qty.": {
+      "label": "56",
+      "variant": "",
+      "extra": ""
+    }
+  },
+  {
+    "Employee": {
+      "label": "Miracle Siphron",
+      "variant": "avatarActive",
+      "extra": "https://picsum.photos/300/400"
+    },
+    "Average rating": {
+      "label": "3.5",
+      "variant": "star",
+      "extra": ""
+    },
+    "Transactions qty.": {
+      "label": "120",
+      "variant": "",
+      "extra": ""
+    }
+  }
+]
