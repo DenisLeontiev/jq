@@ -32,6 +32,7 @@
         <router-view />
       </div>
     </div>
+    <Modals />
   </div>
 </template>
 
@@ -43,6 +44,7 @@ import Header from "./components/Header.vue";
 import {
   useOutsideClickContainer, useTeleportContainer,
 } from "./common";
+import Modals from "./components/Modals.vue";
 
 useOutsideClickContainer();
 

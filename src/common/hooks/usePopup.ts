@@ -4,53 +4,50 @@ import {
   provide, ref, watchEffect,
 } from "vue";
 import {
-  OptionalRef, RefablePick,
-} from "../types";
-import {
-  getMaybeRef, isSSR, getAllClosest,
-} from "../utils";
+  getAllClosest, getMaybeRef, isSSR, OptionalRef, RefablePick,
+} from "../../common";
 
 export enum PopupPosition {
-    top = "top",
-    center = "center",
-    bottom = "bottom",
-    left = "left",
-    right = "right",
+  top = "top",
+  center = "center",
+  bottom = "bottom",
+  left = "left",
+  right = "right",
 }
 
 export enum PopupAlign {
-    start = "start",
-    center = "center",
-    end = "end",
-    stretch = "stretch",
+  start = "start",
+  center = "center",
+  end = "end",
+  stretch = "stretch",
 }
 
 export type UsePopupParams = RefablePick<{
-    position: PopupPosition;
-    align: PopupAlign;
-    flag: boolean | null;
-    sticky: boolean;
-    stickyOffset: number;
-    offset: number;
-    otherOffset: number;
+  position: PopupPosition;
+  align: PopupAlign;
+  flag: boolean | null;
+  sticky: boolean;
+  stickyOffset: number;
+  offset: number;
+  otherOffset: number;
 }>
 
 export interface PopupInstance {
-    calc(): void;
-    popup: HTMLElement;
-    target: HTMLElement;
+  calc(): void;
+  popup: HTMLElement;
+  target: HTMLElement;
 }
 
 export type PopupContainer = {
-    add(popup: PopupInstance): PopupInstance;
-    remove(popup: PopupInstance): void;
+  add(popup: PopupInstance): PopupInstance;
+  remove(popup: PopupInstance): void;
 }
 
 export interface PopupBounds {
-    top: number;
-    left: number;
-    width: number;
-    height: number;
+  top: number;
+  left: number;
+  width: number;
+  height: number;
 }
 
 export const popupsInjectionKey: InjectionKey<PopupContainer | null> = Symbol("popups");

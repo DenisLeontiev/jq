@@ -11,6 +11,10 @@ export const useState = <State>(
     Ref<State>,
     (newState: State) => void,
     () => void,
+    {
+        show(): void,
+        hide(): void,
+    }
 ] => {
   const state = ref<State>();
 
@@ -26,5 +30,13 @@ export const useState = <State>(
     state.value = state.value === trueValue ? falseValue : trueValue;
   };
 
-  return [(ro ? readonly(state) : state) as Ref<State>, setState, toggle];
+  const show = () => {
+    state.value = trueValue;
+  };
+
+  const hide = () => {
+    state.value = falseValue;
+  };
+
+  return [(ro ? readonly(state) : state) as Ref<State>, setState, toggle, { show, hide }];
 };

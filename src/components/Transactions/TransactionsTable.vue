@@ -10,7 +10,7 @@
       :is-sort="true"
       :body-items="bodyItems"
       :name="name"
-      @click="goToUserPage"
+      @click="openPopup"
     />
     <UiPagination
       :count="5"
@@ -28,7 +28,7 @@ import UiContainer from "../Ui/Container/Container.vue";
 import UiTable from "../Ui/Table/Table.vue";
 import UiFilter from "../Ui/Filter/Filter.vue";
 import UiPagination from "../Ui/Pagination/Pagination.vue";
-import { useTransactionsStore } from "../../stores";
+import { useTransactionsStore, useModalsStore, ModalConfigComponent } from "../../stores";
 
 const name = "transactionsMain";
 const type = "Main";
@@ -38,8 +38,16 @@ const bodyItems = computed(() => (
   transactionsStore.getItems(name, type)
 ));
 
-const goToUserPage = (event: MouseEvent) => {
-  console.log("click");
+const modalsStore = useModalsStore();
+const test = ref(modalsStore.modals);
+const openPopup = (event: MouseEvent) => {
+  modalsStore.showModal({
+    component: ModalConfigComponent.demo,
+    params: {
+      title: "title",
+      layout: "register",
+    },
+  });
 };
 
 const current = ref<number>(1);
