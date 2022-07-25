@@ -15,8 +15,10 @@ export enum ButtonVariant {
     outlineLight = "outlineLight",
     danger = "danger",
     outlineDanger = "outlineDanger",
+    outlinePrimary = "outlinePrimary",
     dark = "dark",
-    text = "text"
+    text = "text",
+    filter = "filter"
 }
 
 export interface ButtonProps {
@@ -45,6 +47,7 @@ export const buttonVariants = [
   ButtonVariant.outlineDanger,
   ButtonVariant.dark,
   ButtonVariant.text,
+  ButtonVariant.filter,
 ];
 
 export const buttonSizes = [

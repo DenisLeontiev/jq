@@ -12,9 +12,9 @@
         <div :class="$style.headPanel__topLeft">
           <div :class="$style.headPanel__wrapper">
             <UiAvatar
-                src="https://picsum.photos/100/100"
-                :size="100"
-                :class="$style.avatar"
+              src="https://picsum.photos/100/100"
+              :size="100"
+              :class="$style.avatar"
             />
             <div :class="$style.headPanel__info">
               <div :class="$style.headPanel__title">
@@ -34,24 +34,24 @@
               </div>
               <div :class="$style.headPanel__stars">
                 <UiIcon
-                    icon="Star"
-                    :class="$style.headPanel__star"
+                  icon="Star"
+                  :class="$style.headPanel__star"
                 />
                 <UiIcon
-                    icon="Star"
-                    :class="$style.headPanel__star"
+                  icon="Star"
+                  :class="$style.headPanel__star"
                 />
                 <UiIcon
-                    icon="Star"
-                    :class="$style.headPanel__star"
+                  icon="Star"
+                  :class="$style.headPanel__star"
                 />
                 <UiIcon
-                    icon="Star"
-                    :class="$style.headPanel__star"
+                  icon="Star"
+                  :class="$style.headPanel__star"
                 />
                 <UiIcon
-                    icon="StarEmpty"
-                    :class="$style.headPanel__star"
+                  icon="StarEmpty"
+                  :class="$style.headPanel__star"
                 />
               </div>
 
@@ -107,11 +107,11 @@
 
         <div :class="$style.headPanel__topRight">
           <UiSelect
-              v-model="periodValue"
-              append-icon="Chevrondown"
-              :options="period"
-              :custom-icon="true"
-              :class="$style.period"
+            v-model="periodValue"
+            append-icon="Chevrondown"
+            :options="period"
+            :custom-icon="true"
+            :class="$style.period"
           />
 
           <div :class="$style.totalStats">
@@ -124,8 +124,8 @@
               </div>
               <div :class="$style.headPanel__statsInfo">
                 <UiIcon
-                    icon="LvlUp"
-                    :class="$style.level"
+                  icon="LvlUp"
+                  :class="$style.level"
                 />
                 <div :class="$style.headPanel__statsPercent">
                   +0,55%
@@ -141,8 +141,8 @@
               </div>
               <div :class="$style.headPanel__statsInfo">
                 <UiIcon
-                    icon="LvlDown"
-                    :class="$style.level"
+                  icon="LvlDown"
+                  :class="$style.level"
                 />
                 <div :class="[$style.headPanel__statsPercent, $style.minus]">
                   +1,42%
@@ -158,8 +158,8 @@
               </div>
               <div :class="$style.headPanel__statsInfo">
                 <UiIcon
-                    icon="LvlUp"
-                    :class="$style.level"
+                  icon="LvlUp"
+                  :class="$style.level"
                 />
                 <div :class="$style.headPanel__statsPercent">
                   +25,44%
@@ -174,13 +174,13 @@
 
           <div :class="$style.graphLegends">
             <div
-                v-for="(item, idx) in testData.datasets"
-                :key="idx"
-                :class="$style.graphLegend"
+              v-for="(item, idx) in testData.datasets"
+              :key="idx"
+              :class="$style.graphLegend"
             >
               <div
-                  :class="$style.graphLegend__color"
-                  :style="`background: ${item.backgroundColor}`"
+                :class="$style.graphLegend__color"
+                :style="`background: ${item.backgroundColor}`"
               />
               {{ item.label }}
             </div>
@@ -196,8 +196,8 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                  icon="Kitchen"
-                  :class="$style.statsByRule__svg"
+                icon="Kitchen"
+                :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">
                 <div :class="$style.statsByRule__value">
@@ -214,8 +214,8 @@
                 </div>
               </div>
               <div
-                  :class="$style.pie"
-                  style="--p:90;--c:var(--green)"
+                :class="$style.pie"
+                style="--p:90;--c:var(--green)"
               >
                 <div :class="$style.pie__value">
                   90%
@@ -234,8 +234,8 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                  icon="Kitchen"
-                  :class="$style.statsByRule__svg"
+                icon="Kitchen"
+                :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">
                 <div :class="$style.statsByRule__value">
@@ -252,8 +252,8 @@
                 </div>
               </div>
               <div
-                  :class="$style.pie"
-                  style="--p:90;--c:var(--green)"
+                :class="$style.pie"
+                style="--p:90;--c:var(--green)"
               >
                 <div :class="$style.pie__value">
                   90%
@@ -272,8 +272,8 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                  icon="Kitchen"
-                  :class="$style.statsByRule__svg"
+                icon="Kitchen"
+                :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">
                 <div :class="$style.statsByRule__value">
@@ -290,8 +290,8 @@
                 </div>
               </div>
               <div
-                  :class="$style.pie"
-                  style="--p:90;--c:var(--green)"
+                :class="$style.pie"
+                style="--p:90;--c:var(--green)"
               >
                 <div :class="$style.pie__value">
                   90%
@@ -310,8 +310,8 @@
             </div>
             <div :class="$style.statsByRule__info">
               <UiIcon
-                  icon="Kitchen"
-                  :class="$style.statsByRule__svg"
+                icon="Kitchen"
+                :class="$style.statsByRule__svg"
               />
               <div :class="$style.statsByRule__values">
                 <div :class="$style.statsByRule__value">
@@ -328,8 +328,8 @@
                 </div>
               </div>
               <div
-                  :class="$style.pie"
-                  style="--p:60;--c:#E24949;--gr:rgba(17, 187, 141, 0.1)"
+                :class="$style.pie"
+                style="--p:60;--c:#E24949;--gr:rgba(17, 187, 141, 0.1)"
               >
                 <div :class="$style.pie__value">
                   60%
@@ -342,8 +342,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </UiContainer>
+      </uicontainer>
+    </div>
 
     <EmplRating
       :class="[$style.cell, $style.topLeft]"
