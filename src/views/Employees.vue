@@ -24,6 +24,7 @@ const breadcrumbs = ref<Array<BreadcrumbsItemProps>>(
   [{ title: "Home", to: "/" }, { title: "Employees", to: "/employees" }],
 );
 const name = "employeesMain";
+const type = "Main";
 
 </script>
 

@@ -10,9 +10,10 @@
     <table :class="$style.table">
       <thead>
         <tr>
-          <th>Employee</th>
-          <th>Average rating</th>
-          <th>Transactions qty.</th>
+          <th />
+          <th>Raiting</th>
+          <th>Feedback</th>
+          <th>Amount</th>
           <th />
         </tr>
       </thead>
@@ -34,12 +35,7 @@
                     src="https://picsum.photos/100/100"
                     :size="36"
                   />
-                  <UiIcon
-                    icon="Active"
-                    :class="$style.status"
-                  />
                 </div>
-                Wilson Saris
               </div>
             </td>
             <td>
@@ -52,7 +48,41 @@
               </div>
             </td>
             <td>
-              56
+              <div :class="$style.feedback">
+                <div :class="$style.feedback__props">
+                  <UiIcon
+                    icon="Burger"
+                    :class="[$style.icon, $style.positive]"
+                  />
+                  <UiIcon
+                    icon="Bow"
+                    :class="[$style.icon, $style.negative]"
+                  />
+                  <UiIcon
+                    icon="Water"
+                    :class="[$style.icon]"
+                  />
+                  <UiIcon
+                    icon="Heart"
+                    :class="[$style.icon]"
+                  />
+                </div>
+                <UiIcon
+                  icon="Comment"
+                  :class="[$style.icon, $style.commented]"
+                />
+              </div>
+            </td>
+            <td>
+              <div :class="$style.amount">
+                70 AED
+                <div :class="$style.date">
+                  <span :class="$style.time">
+                    8:24 pm
+                  </span>
+                  20 Jul 22
+                </div>
+              </div>
             </td>
             <td>
               <UiIcon
@@ -78,12 +108,7 @@
                     src="https://picsum.photos/100/100"
                     :size="36"
                   />
-                  <UiIcon
-                    icon="Active"
-                    :class="$style.status"
-                  />
                 </div>
-                Wilson Saris
               </div>
             </td>
             <td>
@@ -96,7 +121,41 @@
               </div>
             </td>
             <td>
-              56
+              <div :class="$style.feedback">
+                <div :class="$style.feedback__props">
+                  <UiIcon
+                    icon="Burger"
+                    :class="[$style.icon, $style.positive]"
+                  />
+                  <UiIcon
+                    icon="Bow"
+                    :class="[$style.icon, $style.negative]"
+                  />
+                  <UiIcon
+                    icon="Water"
+                    :class="[$style.icon]"
+                  />
+                  <UiIcon
+                    icon="Heart"
+                    :class="[$style.icon]"
+                  />
+                </div>
+                <UiIcon
+                  icon="Comment"
+                  :class="[$style.icon, $style.commented]"
+                />
+              </div>
+            </td>
+            <td>
+              <div :class="$style.amount">
+                70 AED
+                <div :class="$style.date">
+                  <span :class="$style.time">
+                    8:24 pm
+                  </span>
+                  20 Jul 22
+                </div>
+              </div>
             </td>
             <td>
               <UiIcon
@@ -122,12 +181,7 @@
                     src="https://picsum.photos/100/100"
                     :size="36"
                   />
-                  <UiIcon
-                    icon="Active"
-                    :class="$style.status"
-                  />
                 </div>
-                Wilson Saris
               </div>
             </td>
             <td>
@@ -140,7 +194,41 @@
               </div>
             </td>
             <td>
-              56
+              <div :class="$style.feedback">
+                <div :class="$style.feedback__props">
+                  <UiIcon
+                    icon="Burger"
+                    :class="[$style.icon, $style.positive]"
+                  />
+                  <UiIcon
+                    icon="Bow"
+                    :class="[$style.icon, $style.negative]"
+                  />
+                  <UiIcon
+                    icon="Water"
+                    :class="[$style.icon]"
+                  />
+                  <UiIcon
+                    icon="Heart"
+                    :class="[$style.icon]"
+                  />
+                </div>
+                <UiIcon
+                  icon="Comment"
+                  :class="[$style.icon, $style.commented]"
+                />
+              </div>
+            </td>
+            <td>
+              <div :class="$style.amount">
+                70 AED
+                <div :class="$style.date">
+                  <span :class="$style.time">
+                    8:24 pm
+                  </span>
+                  20 Jul 22
+                </div>
+              </div>
             </td>
             <td>
               <UiIcon
@@ -166,12 +254,7 @@
                     src="https://picsum.photos/100/100"
                     :size="36"
                   />
-                  <UiIcon
-                    icon="Active"
-                    :class="$style.status"
-                  />
                 </div>
-                Wilson Saris
               </div>
             </td>
             <td>
@@ -184,7 +267,41 @@
               </div>
             </td>
             <td>
-              56
+              <div :class="$style.feedback">
+                <div :class="$style.feedback__props">
+                  <UiIcon
+                    icon="Burger"
+                    :class="[$style.icon, $style.positive]"
+                  />
+                  <UiIcon
+                    icon="Bow"
+                    :class="[$style.icon, $style.negative]"
+                  />
+                  <UiIcon
+                    icon="Water"
+                    :class="[$style.icon]"
+                  />
+                  <UiIcon
+                    icon="Heart"
+                    :class="[$style.icon]"
+                  />
+                </div>
+                <UiIcon
+                  icon="Comment"
+                  :class="[$style.icon, $style.commented]"
+                />
+              </div>
+            </td>
+            <td>
+              <div :class="$style.amount">
+                70 AED
+                <div :class="$style.date">
+                  <span :class="$style.time">
+                    8:24 pm
+                  </span>
+                  20 Jul 22
+                </div>
+              </div>
             </td>
             <td>
               <UiIcon
@@ -210,12 +327,7 @@
                     src="https://picsum.photos/100/100"
                     :size="36"
                   />
-                  <UiIcon
-                    icon="Active"
-                    :class="$style.status"
-                  />
                 </div>
-                Wilson Saris
               </div>
             </td>
             <td>
@@ -228,7 +340,41 @@
               </div>
             </td>
             <td>
-              56
+              <div :class="$style.feedback">
+                <div :class="$style.feedback__props">
+                  <UiIcon
+                    icon="Burger"
+                    :class="[$style.icon, $style.positive]"
+                  />
+                  <UiIcon
+                    icon="Bow"
+                    :class="[$style.icon, $style.negative]"
+                  />
+                  <UiIcon
+                    icon="Water"
+                    :class="[$style.icon]"
+                  />
+                  <UiIcon
+                    icon="Heart"
+                    :class="[$style.icon]"
+                  />
+                </div>
+                <UiIcon
+                  icon="Comment"
+                  :class="[$style.icon, $style.commented]"
+                />
+              </div>
+            </td>
+            <td>
+              <div :class="$style.amount">
+                70 AED
+                <div :class="$style.date">
+                  <span :class="$style.time">
+                    8:24 pm
+                  </span>
+                  20 Jul 22
+                </div>
+              </div>
             </td>
             <td>
               <UiIcon
@@ -252,36 +398,6 @@ import UiTable from "../Ui/Table/Table.vue";
 import UiIcon from "../Ui/Icon/Icon.vue";
 import UiAvatar from "../Ui/Avatar/Avatar.vue";
 
-interface Items extends AvatarProps {
-  title?: string;
-}
-
-const items = ref<Array<Items>>(
-  [
-    {
-      text: "ALL",
-      border: true,
-      title: "ALL",
-    },
-    {
-      src: "https://picsum.photos/300/300",
-      title: "Restaurant 1",
-    },
-    {
-      src: "https://picsum.photos/300/300",
-      title: "Restaurant 2",
-    },
-    {
-      src: "https://picsum.photos/300/300",
-      title: "Restaurant 3",
-    },
-    {
-      text: "R",
-      border: true,
-      title: "ALL",
-    },
-  ],
-);
 const current = ref<number>(1);
 const setCurrent = (value: number) => {
   current.value = value;
@@ -405,5 +521,56 @@ const setCurrent = (value: number) => {
 .name {
   display: inline-flex;
   align-items: center;
+}
+
+.feedback {
+    display: flex;
+    align-items: center;
+
+    &__props {
+        display: flex;
+        align-items: center;
+        gap: 0 rem(4px);
+        margin-right: rem(8px);
+    }
+}
+
+.icon {
+
+    &:not(.positive):not(.negative):not(.commented) svg {
+        fill: #C6C6C6;
+    }
+
+    &.positive svg {
+        fill: var(--green);
+    }
+
+    &.negative svg {
+        fill: var(--red);
+    }
+
+    &.commented svg {
+        fill: var(--lilac);
+    }
+
+    width: rem(16px);
+    height: rem(16px);
+}
+
+.amount {
+    display: flex;
+    flex-direction: column;
+    gap: rem(4px) 0;
+}
+
+.date {
+    font-weight: 700;
+    font-size: rem(10px);
+    line-height: rem(12px);
+    color: #7C868F;
+}
+
+.time {
+    color: #9FA8B1;
 }
 </style>
