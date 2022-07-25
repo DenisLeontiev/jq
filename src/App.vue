@@ -70,6 +70,10 @@ const { setContainer: setTeleportContainer } = useTeleportContainer();
   --black: #030307;
 
   --gradient: linear-gradient(136.01deg, #5F00FF 17.98%, #BF00C0 69.81%, #FF008A 85.06%);
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
 @import './assets/utils';
