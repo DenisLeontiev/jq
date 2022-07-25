@@ -8,5 +8,5 @@ export interface BreadcrumbsItemProps {
 
 export interface BreadcrumbsProps {
     items: Array<BreadcrumbsItemProps>;
-    path: string;
+    path?: string;
 }

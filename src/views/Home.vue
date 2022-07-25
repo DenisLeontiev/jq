@@ -7,329 +7,338 @@
       :items="breadcrumbs"
       :class="$style.breadcrumbs"
     />
+    <div :class="$style.content">
+      <UiContainer :class="[$style.cell, $style.headPanel]">
+        <div :class="$style.headPanel__topLeft">
+          <div :class="$style.headPanel__wrapper">
+            <UiAvatar
+                src="https://picsum.photos/100/100"
+                :size="100"
+                :class="$style.avatar"
+            />
+            <div :class="$style.headPanel__info">
+              <div :class="$style.headPanel__title">
+                Healthy burger
+              </div>
+              <div :class="$style.headPanel__location">
+                Dubai, Park View Tower
+              </div>
+              <div :class="$style.headPanel__members">
+                36 сотрудников
+              </div>
+            </div>
 
-    <UiContainer :class="[$style.cell, $style.headPanel]">
-      <div :class="$style.headPanel__topLeft">
-        <div :class="$style.headPanel__wrapper">
-          <UiAvatar
-            src="https://picsum.photos/100/100"
-            :size="100"
-            :class="$style.avatar"
+            <div :class="$style.headPanel__stats">
+              <div :class="$style.headPanel__statsReview">
+                4,1
+              </div>
+              <div :class="$style.headPanel__stars">
+                <UiIcon
+                    icon="Star"
+                    :class="$style.headPanel__star"
+                />
+                <UiIcon
+                    icon="Star"
+                    :class="$style.headPanel__star"
+                />
+                <UiIcon
+                    icon="Star"
+                    :class="$style.headPanel__star"
+                />
+                <UiIcon
+                    icon="Star"
+                    :class="$style.headPanel__star"
+                />
+                <UiIcon
+                    icon="StarEmpty"
+                    :class="$style.headPanel__star"
+                />
+              </div>
+
+              (430 reviews)
+            </div>
+
+            <ul :class="$style.headPanel__statInfo">
+              <li>
+                <div :class="$style.headPanel__emoji">
+                  😍
+                </div>
+                5 stars
+                <span>332</span>
+              </li>
+              <li>
+                <div :class="$style.headPanel__emoji">
+                  😊
+                </div>
+                4 stars
+                <span>39</span>
+              </li>
+              <li>
+                <div :class="$style.headPanel__emoji">
+                  😐
+                </div>
+                3 stars
+                <span>21</span>
+              </li>
+              <li>
+                <div :class="$style.headPanel__emoji">
+                  😢
+                </div>
+                2 stars
+                <span>14</span>
+              </li>
+              <li>
+                <div :class="$style.headPanel__emoji">
+                  😱
+                </div>
+                1 star
+                <span>7</span>
+              </li>
+              <li>
+                <div :class="$style.headPanel__emoji">
+                  🤔
+                </div>
+                not rated
+                <span>55</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div :class="$style.headPanel__topRight">
+          <UiSelect
+              v-model="periodValue"
+              append-icon="Chevrondown"
+              :options="period"
+              :custom-icon="true"
+              :class="$style.period"
           />
-          <div :class="$style.headPanel__info">
-            <div :class="$style.headPanel__title">
-              Healthy burger
-            </div>
-            <div :class="$style.headPanel__location">
-              Dubai, Park View Tower
-            </div>
-            <div :class="$style.headPanel__members">
-              36 сотрудников
-            </div>
-          </div>
 
-          <div :class="$style.headPanel__stats">
-            <div :class="$style.headPanel__statsReview">
-              4,1
-            </div>
-            <div :class="$style.headPanel__stars">
-              <UiIcon
-                icon="Star"
-                :class="$style.headPanel__star"
-              />
-              <UiIcon
-                icon="Star"
-                :class="$style.headPanel__star"
-              />
-              <UiIcon
-                icon="Star"
-                :class="$style.headPanel__star"
-              />
-              <UiIcon
-                icon="Star"
-                :class="$style.headPanel__star"
-              />
-              <UiIcon
-                icon="StarEmpty"
-                :class="$style.headPanel__star"
-              />
-            </div>
-
-            (430 reviews)
-          </div>
-
-          <ul :class="$style.headPanel__statInfo">
-            <li>
-              <div :class="$style.headPanel__emoji">
-                😍
+          <div :class="$style.totalStats">
+            <div :class="$style.totalStat">
+              <div :class="$style.totalStat__title">
+                Общая сумма чаевых
               </div>
-              5 stars
-              <span>332</span>
-            </li>
-            <li>
-              <div :class="$style.headPanel__emoji">
-                😊
+              <div :class="$style.totalStat__value">
+                220 000 AED
               </div>
-              4 stars
-              <span>39</span>
-            </li>
-            <li>
-              <div :class="$style.headPanel__emoji">
-                😐
-              </div>
-              3 stars
-              <span>21</span>
-            </li>
-            <li>
-              <div :class="$style.headPanel__emoji">
-                😢
-              </div>
-              2 stars
-              <span>14</span>
-            </li>
-            <li>
-              <div :class="$style.headPanel__emoji">
-                😱
-              </div>
-              1 star
-              <span>7</span>
-            </li>
-            <li>
-              <div :class="$style.headPanel__emoji">
-                🤔
-              </div>
-              not rated
-              <span>55</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div :class="$style.headPanel__topRight">
-        <div :class="$style.totalStats">
-          <div :class="$style.totalStat">
-            <div :class="$style.totalStat__title">
-              Общая сумма чаевых
-            </div>
-            <div :class="$style.totalStat__value">
-              220 000 AED
-            </div>
-            <div :class="$style.headPanel__statsInfo">
-              <UiIcon
-                icon="LvlUp"
-                :class="$style.level"
-              />
-              <div :class="$style.headPanel__statsPercent">
-                +0,55%
-              </div>
-            </div>
-          </div>
-          <div :class="$style.totalStat">
-            <div :class="$style.totalStat__title">
-              Средний размер чаевых
-            </div>
-            <div :class="$style.totalStat__value">
-              500 AED
-            </div>
-            <div :class="$style.headPanel__statsInfo">
-              <UiIcon
-                icon="LvlDown"
-                :class="$style.level"
-              />
-              <div :class="[$style.headPanel__statsPercent, $style.minus]">
-                +1,42%
-              </div>
-            </div>
-          </div>
-          <div :class="$style.totalStat">
-            <div :class="$style.totalStat__title">
-              Средний процент чаевых
-            </div>
-            <div :class="$style.totalStat__value">
-              20 %
-            </div>
-            <div :class="$style.headPanel__statsInfo">
-              <UiIcon
-                icon="LvlUp"
-                :class="$style.level"
-              />
-              <div :class="$style.headPanel__statsPercent">
-                +25,44%
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div :class="$style.graphTitle">
-          Статистика за последние 7 дней
-        </div>
-
-        <div :class="$style.graphLegends">
-          <div
-            v-for="(item, idx) in testData.datasets"
-            :key="idx"
-            :class="$style.graphLegend"
-          >
-            <div
-              :class="$style.graphLegend__color"
-              :style="`background: ${item.backgroundColor}`"
-            />
-            {{ item.label }}
-          </div>
-        </div>
-
-        <BarChart v-bind="barChartProps" />
-      </div>
-
-      <div :class="[$style.headPanel__bottom, $style.statsByRules]">
-        <div :class="$style.statsByRule">
-          <div :class="$style.statsByRule__title">
-            Kitchen
-          </div>
-          <div :class="$style.statsByRule__info">
-            <UiIcon
-              icon="Kitchen"
-              :class="$style.statsByRule__svg"
-            />
-            <div :class="$style.statsByRule__values">
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😍
+              <div :class="$style.headPanel__statsInfo">
+                <UiIcon
+                    icon="LvlUp"
+                    :class="$style.level"
+                />
+                <div :class="$style.headPanel__statsPercent">
+                  +0,55%
                 </div>
-                160
-              </div>
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😐
-                </div>
-                40
               </div>
             </div>
+            <div :class="$style.totalStat">
+              <div :class="$style.totalStat__title">
+                Средний размер чаевых
+              </div>
+              <div :class="$style.totalStat__value">
+                500 AED
+              </div>
+              <div :class="$style.headPanel__statsInfo">
+                <UiIcon
+                    icon="LvlDown"
+                    :class="$style.level"
+                />
+                <div :class="[$style.headPanel__statsPercent, $style.minus]">
+                  +1,42%
+                </div>
+              </div>
+            </div>
+            <div :class="$style.totalStat">
+              <div :class="$style.totalStat__title">
+                Средний процент чаевых
+              </div>
+              <div :class="$style.totalStat__value">
+                20 %
+              </div>
+              <div :class="$style.headPanel__statsInfo">
+                <UiIcon
+                    icon="LvlUp"
+                    :class="$style.level"
+                />
+                <div :class="$style.headPanel__statsPercent">
+                  +25,44%
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div :class="$style.graphTitle">
+            Статистика за последние 7 дней
+          </div>
+
+          <div :class="$style.graphLegends">
             <div
-              :class="$style.pie"
-              style="--p:90;--c:var(--green)"
+                v-for="(item, idx) in testData.datasets"
+                :key="idx"
+                :class="$style.graphLegend"
             >
-              <div :class="$style.pie__value">
-                90%
+              <div
+                  :class="$style.graphLegend__color"
+                  :style="`background: ${item.backgroundColor}`"
+              />
+              {{ item.label }}
+            </div>
+          </div>
+
+          <BarChart v-bind="barChartProps" />
+        </div>
+
+        <div :class="[$style.headPanel__bottom, $style.statsByRules]">
+          <div :class="$style.statsByRule">
+            <div :class="$style.statsByRule__title">
+              Kitchen
+            </div>
+            <div :class="$style.statsByRule__info">
+              <UiIcon
+                  icon="Kitchen"
+                  :class="$style.statsByRule__svg"
+              />
+              <div :class="$style.statsByRule__values">
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😍
+                  </div>
+                  160
+                </div>
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😐
+                  </div>
+                  40
+                </div>
               </div>
-              <div :class="$style.pie__text">
+              <div
+                  :class="$style.pie"
+                  style="--p:90;--c:var(--green)"
+              >
+                <div :class="$style.pie__value">
+                  90%
+                </div>
+                <div :class="$style.pie__text">
+                  positive
+                </div>
                 positive
               </div>
-              positive
             </div>
           </div>
-        </div>
 
-        <div :class="$style.statsByRule">
-          <div :class="$style.statsByRule__title">
-            Kitchen
-          </div>
-          <div :class="$style.statsByRule__info">
-            <UiIcon
-              icon="Kitchen"
-              :class="$style.statsByRule__svg"
-            />
-            <div :class="$style.statsByRule__values">
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😍
-                </div>
-                160
-              </div>
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😐
-                </div>
-                40
-              </div>
+          <div :class="$style.statsByRule">
+            <div :class="$style.statsByRule__title">
+              Kitchen
             </div>
-            <div
-              :class="$style.pie"
-              style="--p:90;--c:var(--green)"
-            >
-              <div :class="$style.pie__value">
-                90%
+            <div :class="$style.statsByRule__info">
+              <UiIcon
+                  icon="Kitchen"
+                  :class="$style.statsByRule__svg"
+              />
+              <div :class="$style.statsByRule__values">
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😍
+                  </div>
+                  160
+                </div>
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😐
+                  </div>
+                  40
+                </div>
               </div>
-              <div :class="$style.pie__text">
+              <div
+                  :class="$style.pie"
+                  style="--p:90;--c:var(--green)"
+              >
+                <div :class="$style.pie__value">
+                  90%
+                </div>
+                <div :class="$style.pie__text">
+                  positive
+                </div>
                 positive
               </div>
-              positive
             </div>
           </div>
-        </div>
 
-        <div :class="$style.statsByRule">
-          <div :class="$style.statsByRule__title">
-            Kitchen
-          </div>
-          <div :class="$style.statsByRule__info">
-            <UiIcon
-              icon="Kitchen"
-              :class="$style.statsByRule__svg"
-            />
-            <div :class="$style.statsByRule__values">
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😍
-                </div>
-                160
-              </div>
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😐
-                </div>
-                40
-              </div>
+          <div :class="$style.statsByRule">
+            <div :class="$style.statsByRule__title">
+              Kitchen
             </div>
-            <div
-              :class="$style.pie"
-              style="--p:90;--c:var(--green)"
-            >
-              <div :class="$style.pie__value">
-                90%
+            <div :class="$style.statsByRule__info">
+              <UiIcon
+                  icon="Kitchen"
+                  :class="$style.statsByRule__svg"
+              />
+              <div :class="$style.statsByRule__values">
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😍
+                  </div>
+                  160
+                </div>
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😐
+                  </div>
+                  40
+                </div>
               </div>
-              <div :class="$style.pie__text">
+              <div
+                  :class="$style.pie"
+                  style="--p:90;--c:var(--green)"
+              >
+                <div :class="$style.pie__value">
+                  90%
+                </div>
+                <div :class="$style.pie__text">
+                  positive
+                </div>
                 positive
               </div>
-              positive
             </div>
           </div>
-        </div>
 
-        <div :class="$style.statsByRule">
-          <div :class="$style.statsByRule__title">
-            Kitchen
-          </div>
-          <div :class="$style.statsByRule__info">
-            <UiIcon
-              icon="Kitchen"
-              :class="$style.statsByRule__svg"
-            />
-            <div :class="$style.statsByRule__values">
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😍
-                </div>
-                160
-              </div>
-              <div :class="$style.statsByRule__value">
-                <div :class="$style.statsByRule__emoji">
-                  😐
-                </div>
-                40
-              </div>
+          <div :class="$style.statsByRule">
+            <div :class="$style.statsByRule__title">
+              Kitchen
             </div>
-            <div
-              :class="$style.pie"
-              style="--p:60;--c:#E24949;--gr:rgba(17, 187, 141, 0.1)"
-            >
-              <div :class="$style.pie__value">
-                60%
+            <div :class="$style.statsByRule__info">
+              <UiIcon
+                  icon="Kitchen"
+                  :class="$style.statsByRule__svg"
+              />
+              <div :class="$style.statsByRule__values">
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😍
+                  </div>
+                  160
+                </div>
+                <div :class="$style.statsByRule__value">
+                  <div :class="$style.statsByRule__emoji">
+                    😐
+                  </div>
+                  40
+                </div>
               </div>
-              <div :class="$style.pie__text">
+              <div
+                  :class="$style.pie"
+                  style="--p:60;--c:#E24949;--gr:rgba(17, 187, 141, 0.1)"
+              >
+                <div :class="$style.pie__value">
+                  60%
+                </div>
+                <div :class="$style.pie__text">
+                  negative
+                </div>
                 negative
               </div>
-              negative
             </div>
           </div>
         </div>
@@ -557,17 +566,16 @@ const employeesItems = computed(() => (
   }
 }
 
-.container {
+.content {
   display: grid;
-  grid-template-areas: "breadcrumbs breadcrumbs"
-                       "headPanel headPanel"
+  grid-template-areas: "headPanel headPanel"
                        "topLeft topRight"
                        "bottom bottom";
   gap: rem(40px);
   grid-template-columns: 1fr 1fr;
 }
 .breadcrumbs {
-  grid-area: breadcrumbs;
+  margin-bottom: rem(28px);
 }
 
 .avatar {

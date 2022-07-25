@@ -20,13 +20,17 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import UiContainer from "../components/Ui/Container/Container.vue";
 import UiBreadcrumbs from "../components/Ui/breadcrumbs/breadcrumbs.vue";
 import UiTable from "../components/Ui/Table/Table.vue";
 import { useEmployeesStore } from "../stores";
 import EmployeesBest from "../components/Employees/EmployeesBest.vue";
+import { BreadcrumbsItemProps } from "../components/Ui/Breadcrumbs";
 
+const breadcrumbs = ref<Array<BreadcrumbsItemProps>>(
+  [{ title: "Home", to: "/" }, { title: "Employees", to: "/employees" }],
+);
 const name = "employeesMain";
 const type = "Main";
 
@@ -40,7 +44,9 @@ const bodyItems = computed(() => (
 <style lang="scss" module>
 @import "../assets/utils";
 .employees {}
-.breadcrumbs {}
+.breadcrumbs {
+  margin-bottom: rem(28px);
+}
 .best {
   margin-bottom: rem(22px);
 }
