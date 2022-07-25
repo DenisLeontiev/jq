@@ -62,5 +62,101 @@
       "variant": "text",
       "extra": "%"
     }
+  },
+  {
+    "Employee": {
+      "label": "Miracle Culhane",
+      "variant": "avatarActive",
+      "extra": "https://picsum.photos/300/200"
+    },
+    "Average rating": {
+      "label": "2.5",
+      "variant": "star",
+      "extra": ""
+    },
+    "Transactions qty.": {
+      "label": "99",
+      "variant": "",
+      "extra": ""
+    },
+    "Reviews qty.": {
+      "label": "25",
+      "variant": "",
+      "extra": ""
+    },
+    "Average tips amount": {
+      "label": "19",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "Average bill %": {
+      "label": "19",
+      "variant": "text",
+      "extra": "%"
+    }
+  },
+  {
+    "Employee": {
+      "label": "Carla Curtis",
+      "variant": "avatarActive",
+      "extra": "https://picsum.photos/300/500"
+    },
+    "Average rating": {
+      "label": "4.5",
+      "variant": "star",
+      "extra": ""
+    },
+    "Transactions qty.": {
+      "label": "99",
+      "variant": "",
+      "extra": ""
+    },
+    "Reviews qty.": {
+      "label": "25",
+      "variant": "",
+      "extra": ""
+    },
+    "Average tips amount": {
+      "label": "19",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "Average bill %": {
+      "label": "19",
+      "variant": "text",
+      "extra": "%"
+    }
+  },
+  {
+    "Employee": {
+      "label": "Makenna Kenter",
+      "variant": "avatarActive",
+      "extra": "https://picsum.photos/200/100"
+    },
+    "Average rating": {
+      "label": "4.5",
+      "variant": "star",
+      "extra": ""
+    },
+    "Transactions qty.": {
+      "label": "99",
+      "variant": "",
+      "extra": ""
+    },
+    "Reviews qty.": {
+      "label": "25",
+      "variant": "",
+      "extra": ""
+    },
+    "Average tips amount": {
+      "label": "19",
+      "variant": "text",
+      "extra": "&nbsp;AED"
+    },
+    "Average bill %": {
+      "label": "19",
+      "variant": "text",
+      "extra": "%"
+    }
   }
 ]

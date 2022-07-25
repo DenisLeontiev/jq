@@ -101,7 +101,7 @@ const onClick = (event: MouseEvent) => {
   width: 100%;
 
   border-collapse: separate;
-  border-spacing: 0;
+  border-spacing: 0 rem(20px);
   text-align: left;
 
   color: #030307;
@@ -120,10 +120,13 @@ const onClick = (event: MouseEvent) => {
     }
     &:hover {
       background-color: #F8F8F8;
+      .td {
+        border-bottom: 1px solid #F8F8F8;
+      }
     }
   }
   .th {
-    height: rem(54px);
+    height: rem(24px);
 
     font-weight: 700;
     font-size: rem(10px);
@@ -136,6 +139,9 @@ const onClick = (event: MouseEvent) => {
     }
   }
   .td {
+    transition: border-bottom 0.2s;
+    border-bottom: 1px solid #EAEEF1;
+
     height: rem(54px);
 
     font-weight: 600;
